@@ -155,7 +155,9 @@ function ParkingSpacesOverlay({ data }: { data: any }) {
         return
       }
       const features = filtered.map((feature: any) => {
-        if (feature.properties?.id === 'way/875331908') {
+        const id = feature.properties?.id
+        const numeric = Number(id?.split('/')?.[1] || 0)
+        /*if (numeric >= 875331908 && numeric <= 875332179) {
           return {
             ...feature,
             properties: {
@@ -164,7 +166,7 @@ function ParkingSpacesOverlay({ data }: { data: any }) {
               _fill: '#f87171',
             },
           }
-        }
+        }*/
         return feature
       })
       setSubset({ ...data, features })
@@ -193,10 +195,11 @@ function ParkingSpacesOverlay({ data }: { data: any }) {
   )
 }
 
-export default function MapView() {
+export default function MapView({ searchQuery = '' }: { searchQuery?: string }) {
   const base = import.meta.env.VITE_API_BASE || 'http://localhost:4000'
   const selectedLotId = useApp((s) => s.selectedLotId)
   const setSelectedLotId = useApp((s) => s.setSelectedLotId)
+  const filters = useApp((s) => s.filters)
 
   const { data: spacesRaw } = useQuery({
     queryKey: ['parking-spaces-osu'],
@@ -217,9 +220,24 @@ export default function MapView() {
   })
 
   const { data: lotSummaries } = useQuery({
-    queryKey: ['lot-summaries'],
-    queryFn: () => getLots({})
+    queryKey: ['lot-summaries', filters.permit],
+    queryFn: () => getLots({ permit: filters.permit }),
   })
+
+  const { data: occupancy } = useQuery({
+    queryKey: ['lot-occupancy'],
+    queryFn: async () => {
+      const res = await fetch(`${base}/data/output1.json`)
+      if (!res.ok) throw new Error('Failed to load occupancy')
+      return res.json()
+    },
+  })
+
+  const occupiedSet = useMemo(() => {
+    const slots = occupancy?.slots
+    if (!Array.isArray(slots)) return new Set<string>()
+    return new Set(slots.filter((slot: any) => slot?.occupied).map((slot: any) => `way/${slot.id}`))
+  }, [occupancy])
 
   const lotSummariesByOsmId = useMemo(() => {
     const map = new Map<string, any>()
@@ -234,19 +252,46 @@ export default function MapView() {
 
   const allowedLots = useMemo(() => {
     if (!lotsGeo?.features) return []
-    return lotsGeo.features.filter((feature: any) => ALLOWED_OSM_IDS.has(feature.properties?.id))
-  }, [lotsGeo])
+    const q = searchQuery.trim().toLowerCase()
+    return lotsGeo.features.filter((feature: any) => {
+      const id = feature.properties?.id
+      if (!ALLOWED_OSM_IDS.has(id)) return false
+      if (!q) return true
+      const summary = lotSummariesByOsmId.get(id)
+      if (!summary) return false
+      if (filters.permit && !summary.permit_types?.includes(filters.permit)) return false
+      const haystack = [summary.name, summary.code, summary.metadata?.tags?.operator]
+        .join(' ')
+        .toLowerCase()
+      return haystack.includes(q)
+    })
+  }, [lotsGeo, lotSummariesByOsmId, searchQuery, filters.permit])
 
   const filteredSpaces = useMemo(() => {
     if (!spacesRaw?.features || !allowedLots.length) return null
     const allowed = allowedLots.map((lot: any) => lot.geometry)
-    const features = spacesRaw.features.filter((feature: any) => {
-      const center = computeCentroidLonLat(feature.geometry)
-      if (!center) return false
-      return allowed.some((geom: any) => geometryContainsPoint(geom, center))
-    })
+    const features = spacesRaw.features
+      .filter((feature: any) => {
+        const center = computeCentroidLonLat(feature.geometry)
+        if (!center) return false
+        return allowed.some((geom: any) => geometryContainsPoint(geom, center))
+      })
+      .map((feature: any) => {
+        const id = feature.properties?.id
+        if (occupiedSet.has(id)) {
+          return {
+            ...feature,
+            properties: {
+              ...feature.properties,
+              _color: '#dc2626',
+              _fill: '#f87171',
+            },
+          }
+        }
+        return feature
+      })
     return { ...spacesRaw, features }
-  }, [spacesRaw, allowedLots])
+  }, [spacesRaw, allowedLots, occupiedSet])
 
   const markers = useMemo(() => {
     return allowedLots
@@ -277,8 +322,9 @@ export default function MapView() {
       minZoom={14}
       maxZoom={19}
       scrollWheelZoom
-      className='w-full h-full'
+      className='w-full h-full min-h-[320px]'
     >
+      <MapInvalidator />
       <TileLayer
         attribution='&copy; OpenStreetMap contributors'
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -321,5 +367,20 @@ function SelectedLotFollower({ markers, selectedLotId }: { markers: any[]; selec
       map.flyTo([marker.centroid[0], marker.centroid[1]], 18, { duration: 0.8 })
     }
   }, [selectedLotId, markers, map])
+  return null
+}
+
+function MapInvalidator() {
+  const map = useMap()
+  useEffect(() => {
+    const invalidate = () => map.invalidateSize()
+    map.whenReady(invalidate)
+    const timeout = window.setTimeout(invalidate, 250)
+    window.addEventListener('resize', invalidate)
+    return () => {
+      window.clearTimeout(timeout)
+      window.removeEventListener('resize', invalidate)
+    }
+  }, [map])
   return null
 }

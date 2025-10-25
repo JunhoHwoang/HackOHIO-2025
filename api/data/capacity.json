@@ -2,15 +2,21 @@
   "lot-way-38911611": [
     {
       "capacity": 441,
-      "occupied": 1,
+      "occupied": 146,
       "source": "seed",
-      "observed_at": "2025-10-25T20:59:10.250Z"
+      "observed_at": "2025-10-25T23:02:01.026Z"
     },
     {
       "capacity": 441,
-      "occupied": 1,
+      "occupied": 144,
       "source": "mock",
-      "observed_at": "2025-10-25T21:00:00.014Z"
+      "observed_at": "2025-10-25T23:10:00.012Z"
+    },
+    {
+      "capacity": 441,
+      "occupied": 142,
+      "source": "mock",
+      "observed_at": "2025-10-25T23:20:00.015Z"
     }
   ],
   "lot-way-39115920": [
@@ -18,13 +24,19 @@
       "capacity": 38,
       "occupied": 0,
       "source": "seed",
-      "observed_at": "2025-10-25T20:59:10.251Z"
+      "observed_at": "2025-10-25T23:02:01.030Z"
     },
     {
       "capacity": 38,
-      "occupied": 1,
+      "occupied": 2,
       "source": "mock",
-      "observed_at": "2025-10-25T21:00:00.014Z"
+      "observed_at": "2025-10-25T23:10:00.012Z"
+    },
+    {
+      "capacity": 38,
+      "occupied": 3,
+      "source": "mock",
+      "observed_at": "2025-10-25T23:20:00.015Z"
     }
   ],
   "lot-way-275147287": [
@@ -32,13 +44,19 @@
       "capacity": 51,
       "occupied": 0,
       "source": "seed",
-      "observed_at": "2025-10-25T20:59:10.252Z"
+      "observed_at": "2025-10-25T23:02:01.031Z"
     },
     {
       "capacity": 51,
       "occupied": 0,
       "source": "mock",
-      "observed_at": "2025-10-25T21:00:00.014Z"
+      "observed_at": "2025-10-25T23:10:00.012Z"
+    },
+    {
+      "capacity": 51,
+      "occupied": 1,
+      "source": "mock",
+      "observed_at": "2025-10-25T23:20:00.015Z"
     }
   ],
   "lot-way-444966505": [
@@ -46,13 +64,19 @@
       "capacity": 435,
       "occupied": 0,
       "source": "seed",
-      "observed_at": "2025-10-25T20:59:10.252Z"
+      "observed_at": "2025-10-25T23:02:01.031Z"
     },
     {
       "capacity": 435,
       "occupied": 0,
       "source": "mock",
-      "observed_at": "2025-10-25T21:00:00.014Z"
+      "observed_at": "2025-10-25T23:10:00.012Z"
+    },
+    {
+      "capacity": 435,
+      "occupied": 0,
+      "source": "mock",
+      "observed_at": "2025-10-25T23:20:00.015Z"
     }
   ]
 }

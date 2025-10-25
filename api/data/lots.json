@@ -1,7 +1,7 @@
 [
   {
     "id": "lot-way-38911611",
-    "name": "Saint John's Arena Parking",
+    "name": "Stadium Northeast Parking",
     "code": null,
     "campus": "Columbus",
     "centroid": {
@@ -215,7 +215,9 @@
       }
     ],
     "permit_types": [
-      "Visitor"
+      "A",
+      "B",
+      "C"
     ],
     "parkmobile_zone": null,
     "pricing_json": null,
@@ -224,7 +226,7 @@
       "notes": "Generated from OpenStreetMap",
       "imageDimensions": null,
       "spaceCount": 441,
-      "occupiedCount": 1,
+      "occupiedCount": 146,
       "tags": {
         "access": "permissive",
         "amenity": "parking",
@@ -386,7 +388,9 @@
       }
     ],
     "permit_types": [
-      "Visitor"
+      "A",
+      "B",
+      "C"
     ],
     "parkmobile_zone": null,
     "pricing_json": null,
@@ -539,7 +543,8 @@
       }
     ],
     "permit_types": [
-      "Visitor"
+      "A",
+      "B"
     ],
     "parkmobile_zone": null,
     "pricing_json": null,
@@ -560,7 +565,7 @@
   },
   {
     "id": "lot-way-444966505",
-    "name": "Stadium Northeast Parking",
+    "name": "Saint John's Arena Parking",
     "code": null,
     "campus": "Columbus",
     "centroid": {
@@ -942,7 +947,8 @@
       }
     ],
     "permit_types": [
-      "Visitor"
+      "B",
+      "C"
     ],
     "parkmobile_zone": null,
     "pricing_json": null,

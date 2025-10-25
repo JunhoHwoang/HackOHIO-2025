@@ -19,14 +19,23 @@ const ALLOWED_LOT_IDS = new Set([
   "way/444966505",
   "way/275147287"
 ]);
-const OCCUPIED_SPACE_IDS = new Set([
-  "way/875331908"
-]);
+const occupancyData = readJSON(path.join(DATA_DIR, "output1.json"), { slots: [] });
+console.log('Occupancy data keys', occupancyData && Object.keys(occupancyData));
+const sourceSlots = Array.isArray(occupancyData?.slots) ? occupancyData.slots : [];
+console.log('Sample occupied entries', sourceSlots.filter((slot) => slot?.occupied).slice(0, 3));
+const OCCUPIED_SPACE_IDS = new Set(sourceSlots.filter((slot) => slot?.occupied).map((slot) => `way/${slot.id}`));
+console.log('Loaded occupied slots', OCCUPIED_SPACE_IDS.size);
 const LOT_NAME_OVERRIDES = {
   "way/39115920": "Stadium Southeast Parking",
-  "way/38911611": "Saint John's Arena Parking",
-  "way/444966505": "Stadium Northeast Parking",
+  "way/38911611": "Stadium Northeast Parking",
+  "way/444966505": "Saint John's Arena Parking",
   "way/275147287": "Stadium East Parking"
+};
+const LOT_PERMIT_OVERRIDES = {
+  "way/39115920": ["A", "B", "C"],
+  "way/38911611": ["A", "B", "C"],
+  "way/444966505": ["B", "C"],
+  "way/275147287": ["A", "B"]
 };
 const MIN_LOT_AREA_SQ_M = 0;
 const EARTH_RADIUS = 6378137;
@@ -205,7 +214,7 @@ function generateLotsFromOSM() {
       code: tags.ref || tags.operator || null,
       centroid: { lat: centroid[0], lng: centroid[1] },
       boundary,
-      permit_types: ["Visitor"],
+      permit_types: LOT_PERMIT_OVERRIDES[featureId] || ["A", "B", "C"],
       notes: "Generated from OpenStreetMap",
       image: null,
       initialCapacity: { capacity: spaceCount, occupied: occupiedCount },

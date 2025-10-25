@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet'
+import { MapContainer, TileLayer, GeoJSON, useMap } from 'react-leaflet'
 import { useQuery } from '@tanstack/react-query'
 import { useEffect, useMemo } from 'react'
 import type { LotSummary } from '../lib/types'
@@ -84,6 +84,20 @@ export default function LotDetailMap({ lot }: { lot: LotSummary }) {
       return res.json()
     },
   })
+  const { data: occupancy } = useQuery({
+    queryKey: ['lot-occupancy'],
+    queryFn: async () => {
+      const res = await fetch(`${base}/data/output1.json`)
+      if (!res.ok) throw new Error('Failed to load occupancy')
+      return res.json()
+    },
+  })
+
+  const occupiedSet = useMemo(() => {
+    const slots = occupancy?.slots
+    if (!Array.isArray(slots)) return new Set<string>()
+    return new Set(slots.filter((slot: any) => slot?.occupied).map((slot: any) => `way/${slot.id}`))
+  }, [occupancy])
 
   const lotFeature = useMemo(() => {
     if (!lotsGeo?.features) return null
@@ -101,7 +115,8 @@ export default function LotDetailMap({ lot }: { lot: LotSummary }) {
         return geometryContainsPoint(lotFeature.geometry, [center[1], center[0]])
       })
       .map((feature: any) => {
-        if (feature.properties?.id === 'way/875331908') {
+        const id = feature.properties?.id
+        if (occupiedSet.has(id)) {
           return {
             ...feature,
             properties: {
@@ -114,7 +129,7 @@ export default function LotDetailMap({ lot }: { lot: LotSummary }) {
         return feature
       })
     return { ...spaces, features }
-  }, [spaces, lotFeature])
+  }, [spaces, lotFeature, occupiedSet])
 
   const center = useMemo<[number, number]>(() => {
     if (lot.centroid) return [lot.centroid.lat, lot.centroid.lng]
@@ -131,8 +146,9 @@ export default function LotDetailMap({ lot }: { lot: LotSummary }) {
     <MapContainer
       center={center}
       zoom={18}
-      className='w-full h-full'
+      className='w-full h-full min-h-[280px]'
     >
+      <MapInvalidator />
       <TileLayer
         attribution='&copy; OpenStreetMap contributors'
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -157,4 +173,19 @@ export default function LotDetailMap({ lot }: { lot: LotSummary }) {
       )}
     </MapContainer>
   )
+}
+
+function MapInvalidator() {
+  const map = useMap()
+  useEffect(() => {
+    const invalidate = () => map.invalidateSize()
+    map.whenReady(invalidate)
+    const timeout = window.setTimeout(invalidate, 250)
+    window.addEventListener('resize', invalidate)
+    return () => {
+      window.clearTimeout(timeout)
+      window.removeEventListener('resize', invalidate)
+    }
+  }, [map])
+  return null
 }

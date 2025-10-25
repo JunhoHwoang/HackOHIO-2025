@@ -1,0 +1,601 @@
+{
+  "image": "test2.png",
+  "slots": [
+    {
+      "id": 875331884,
+      "occupied": false
+    },
+    {
+      "id": 875331885,
+      "occupied": false
+    },
+    {
+      "id": 875331886,
+      "occupied": false
+    },
+    {
+      "id": 875331887,
+      "occupied": true
+    },
+    {
+      "id": 875331888,
+      "occupied": true
+    },
+    {
+      "id": 875331889,
+      "occupied": true
+    },
+    {
+      "id": 875331890,
+      "occupied": false
+    },
+    {
+      "id": 875331891,
+      "occupied": true
+    },
+    {
+      "id": 875331892,
+      "occupied": false
+    },
+    {
+      "id": 875331893,
+      "occupied": false
+    },
+    {
+      "id": 875331894,
+      "occupied": false
+    },
+    {
+      "id": 875331895,
+      "occupied": false
+    },
+    {
+      "id": 875331896,
+      "occupied": false
+    },
+    {
+      "id": 875331897,
+      "occupied": false
+    },
+    {
+      "id": 875331898,
+      "occupied": false
+    },
+    {
+      "id": 875331899,
+      "occupied": false
+    },
+    {
+      "id": 875331900,
+      "occupied": false
+    },
+    {
+      "id": 875331901,
+      "occupied": false
+    },
+    {
+      "id": 875331902,
+      "occupied": false
+    },
+    {
+      "id": 875331903,
+      "occupied": false
+    },
+    {
+      "id": 875331904,
+      "occupied": false
+    },
+    {
+      "id": 875331905,
+      "occupied": false
+    },
+    {
+      "id": 875331906,
+      "occupied": false
+    },
+    {
+      "id": 875331907,
+      "occupied": false
+    },
+    {
+      "id": 875331908,
+      "occupied": false
+    },
+    {
+      "id": 875332249,
+      "occupied": true
+    },
+    {
+      "id": 875332250,
+      "occupied": true
+    },
+    {
+      "id": 875332251,
+      "occupied": true
+    },
+    {
+      "id": 875332252,
+      "occupied": true
+    },
+    {
+      "id": 875332253,
+      "occupied": true
+    },
+    {
+      "id": 875332254,
+      "occupied": false
+    },
+    {
+      "id": 875332255,
+      "occupied": true
+    },
+    {
+      "id": 875332256,
+      "occupied": true
+    },
+    {
+      "id": 875332257,
+      "occupied": false
+    },
+    {
+      "id": 875332258,
+      "occupied": true
+    },
+    {
+      "id": 875332259,
+      "occupied": false
+    },
+    {
+      "id": 875332260,
+      "occupied": true
+    },
+    {
+      "id": 875332261,
+      "occupied": true
+    },
+    {
+      "id": 875332262,
+      "occupied": false
+    },
+    {
+      "id": 875332263,
+      "occupied": false
+    },
+    {
+      "id": 875332264,
+      "occupied": false
+    },
+    {
+      "id": 875332265,
+      "occupied": true
+    },
+    {
+      "id": 875332266,
+      "occupied": false
+    },
+    {
+      "id": 875332267,
+      "occupied": false
+    },
+    {
+      "id": 875332268,
+      "occupied": false
+    },
+    {
+      "id": 875332269,
+      "occupied": false
+    },
+    {
+      "id": 875332270,
+      "occupied": false
+    },
+    {
+      "id": 875332271,
+      "occupied": false
+    },
+    {
+      "id": 875332272,
+      "occupied": false
+    },
+    {
+      "id": 875332273,
+      "occupied": false
+    },
+    {
+      "id": 875332274,
+      "occupied": false
+    },
+    {
+      "id": 875332275,
+      "occupied": false
+    },
+    {
+      "id": 875332276,
+      "occupied": false
+    },
+    {
+      "id": 875332277,
+      "occupied": false
+    },
+    {
+      "id": 875332278,
+      "occupied": false
+    },
+    {
+      "id": 875332279,
+      "occupied": false
+    },
+    {
+      "id": 875332280,
+      "occupied": false
+    },
+    {
+      "id": 875332281,
+      "occupied": false
+    },
+    {
+      "id": 875332282,
+      "occupied": false
+    },
+    {
+      "id": 875332283,
+      "occupied": false
+    },
+    {
+      "id": 875332284,
+      "occupied": false
+    },
+    {
+      "id": 875332285,
+      "occupied": false
+    },
+    {
+      "id": 875332286,
+      "occupied": false
+    },
+    {
+      "id": 875332287,
+      "occupied": false
+    },
+    {
+      "id": 875332288,
+      "occupied": false
+    },
+    {
+      "id": 875332289,
+      "occupied": false
+    },
+    {
+      "id": 875332290,
+      "occupied": false
+    },
+    {
+      "id": 875332291,
+      "occupied": false
+    },
+    {
+      "id": 875332292,
+      "occupied": false
+    },
+    {
+      "id": 875332293,
+      "occupied": false
+    },
+    {
+      "id": 875332294,
+      "occupied": false
+    },
+    {
+      "id": 875332295,
+      "occupied": false
+    },
+    {
+      "id": 875332296,
+      "occupied": false
+    },
+    {
+      "id": 875332297,
+      "occupied": false
+    },
+    {
+      "id": 875332298,
+      "occupied": false
+    },
+    {
+      "id": 875332299,
+      "occupied": false
+    },
+    {
+      "id": 875332300,
+      "occupied": false
+    },
+    {
+      "id": 875332301,
+      "occupied": true
+    },
+    {
+      "id": 875332302,
+      "occupied": false
+    },
+    {
+      "id": 875332179,
+      "occupied": false
+    },
+    {
+      "id": 875332180,
+      "occupied": false
+    },
+    {
+      "id": 875332181,
+      "occupied": true
+    },
+    {
+      "id": 875332182,
+      "occupied": true
+    },
+    {
+      "id": 875332183,
+      "occupied": true
+    },
+    {
+      "id": 875332184,
+      "occupied": false
+    },
+    {
+      "id": 875332185,
+      "occupied": false
+    },
+    {
+      "id": 875332186,
+      "occupied": true
+    },
+    {
+      "id": 875332187,
+      "occupied": true
+    },
+    {
+      "id": 875332188,
+      "occupied": false
+    },
+    {
+      "id": 875332189,
+      "occupied": true
+    },
+    {
+      "id": 875332190,
+      "occupied": true
+    },
+    {
+      "id": 875332191,
+      "occupied": true
+    },
+    {
+      "id": 875332192,
+      "occupied": true
+    },
+    {
+      "id": 875332193,
+      "occupied": true
+    },
+    {
+      "id": 875332194,
+      "occupied": false
+    },
+    {
+      "id": 875332195,
+      "occupied": true
+    },
+    {
+      "id": 875332196,
+      "occupied": false
+    },
+    {
+      "id": 875332197,
+      "occupied": true
+    },
+    {
+      "id": 875332198,
+      "occupied": true
+    },
+    {
+      "id": 875332199,
+      "occupied": true
+    },
+    {
+      "id": 875332200,
+      "occupied": false
+    },
+    {
+      "id": 875332201,
+      "occupied": false
+    },
+    {
+      "id": 875332202,
+      "occupied": false
+    },
+    {
+      "id": 875332203,
+      "occupied": true
+    },
+    {
+      "id": 875332204,
+      "occupied": true
+    },
+    {
+      "id": 875332205,
+      "occupied": true
+    },
+    {
+      "id": 875332206,
+      "occupied": false
+    },
+    {
+      "id": 875332207,
+      "occupied": true
+    },
+    {
+      "id": 875332208,
+      "occupied": false
+    },
+    {
+      "id": 875332209,
+      "occupied": false
+    },
+    {
+      "id": 875332210,
+      "occupied": false
+    },
+    {
+      "id": 875332211,
+      "occupied": false
+    },
+    {
+      "id": 875332212,
+      "occupied": false
+    },
+    {
+      "id": 875332213,
+      "occupied": false
+    },
+    {
+      "id": 875332214,
+      "occupied": false
+    },
+    {
+      "id": 875332215,
+      "occupied": true
+    },
+    {
+      "id": 875332216,
+      "occupied": false
+    },
+    {
+      "id": 875332217,
+      "occupied": false
+    },
+    {
+      "id": 875332218,
+      "occupied": false
+    },
+    {
+      "id": 875332219,
+      "occupied": true
+    },
+    {
+      "id": 875332220,
+      "occupied": false
+    },
+    {
+      "id": 875332221,
+      "occupied": false
+    },
+    {
+      "id": 875332222,
+      "occupied": false
+    },
+    {
+      "id": 875332223,
+      "occupied": false
+    },
+    {
+      "id": 875332224,
+      "occupied": false
+    },
+    {
+      "id": 875332225,
+      "occupied": false
+    },
+    {
+      "id": 875332226,
+      "occupied": false
+    },
+    {
+      "id": 875332227,
+      "occupied": false
+    },
+    {
+      "id": 875332228,
+      "occupied": false
+    },
+    {
+      "id": 875332229,
+      "occupied": false
+    },
+    {
+      "id": 875332230,
+      "occupied": false
+    },
+    {
+      "id": 875332231,
+      "occupied": false
+    },
+    {
+      "id": 875332232,
+      "occupied": false
+    },
+    {
+      "id": 875332233,
+      "occupied": false
+    },
+    {
+      "id": 875332234,
+      "occupied": false
+    },
+    {
+      "id": 875332235,
+      "occupied": false
+    },
+    {
+      "id": 875332236,
+      "occupied": false
+    },
+    {
+      "id": 875332237,
+      "occupied": false
+    },
+    {
+      "id": 875332238,
+      "occupied": false
+    },
+    {
+      "id": 875332239,
+      "occupied": false
+    },
+    {
+      "id": 875332240,
+      "occupied": false
+    },
+    {
+      "id": 875332241,
+      "occupied": false
+    },
+    {
+      "id": 875332242,
+      "occupied": false
+    },
+    {
+      "id": 875332243,
+      "occupied": false
+    },
+    {
+      "id": 875332244,
+      "occupied": false
+    },
+    {
+      "id": 875332245,
+      "occupied": false
+    },
+    {
+      "id": 875332246,
+      "occupied": false
+    },
+    {
+      "id": 875332247,
+      "occupied": false
+    },
+    {
+      "id": 875332248,
+      "occupied": false
+    }
+  ]
+}

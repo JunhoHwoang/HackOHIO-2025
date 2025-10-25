@@ -39,6 +39,7 @@ let snapshots = readJSON("snapshots.json", {});
 app.get("/", (_req, res) => res.json({ ok: true, service: "smart-parking-api" }));
 app.use("/images", express.static(IMG_DIR));
 app.use("/osm", express.static(path.join(DATA_DIR, "osm")));
+app.use("/data", express.static(DATA_DIR));
 
 app.get("/api/lots", (req, res) => {
   const { near, radius, permit } = req.query;
