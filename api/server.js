@@ -59,7 +59,13 @@ app.get("/api/lots/:id", (req, res) => {
   const latestCap = (capacity[lot.id] || []).slice(-1)[0];
   const latestImage = latestImageForLot(lot.id);
   const stalls = stallsByLot[lot.id] || [];
-  const counts = summarizeStalls(stalls);
+  let counts = summarizeStalls(stalls);
+  const spaceCount = lot.metadata?.spaceCount;
+  const occupiedCount = lot.metadata?.occupiedCount ?? 0;
+  if (counts.total === 0 && spaceCount) {
+    const open = Math.max(spaceCount - occupiedCount, 0);
+    counts = { total: spaceCount, occupied: occupiedCount, open, unknown: Math.max(spaceCount - open - occupiedCount, 0) };
+  }
   res.json({ ...lot, latestCap, latestImage, counts });
 });
 
@@ -101,7 +107,13 @@ app.get("/api/lots/:id/forecast", (req, res) => {
 
 function summarizeLot(l) {
   const stalls = stallsByLot[l.id] || [];
-  const counts = summarizeStalls(stalls);
+  let counts = summarizeStalls(stalls);
+  const spaceCount = l.metadata?.spaceCount;
+  const occupiedCount = l.metadata?.occupiedCount ?? 0;
+  if (counts.total === 0 && spaceCount) {
+    const open = Math.max(spaceCount - occupiedCount, 0);
+    counts = { total: spaceCount, occupied: occupiedCount, open, unknown: Math.max(spaceCount - open - occupiedCount, 0) };
+  }
   const cap = (capacity[l.id] || []).slice(-1)[0] || null;
   const latestImage = latestImageForLot(l.id);
   return { id: l.id, name: l.name, code: l.code || null, centroid: l.centroid, permit_types: l.permit_types || [], latestCap: cap, latestImage, counts };

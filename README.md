@@ -66,9 +66,10 @@ VITE_API_BASE="https://your-api.example.com" npm run dev
     --preview data/images/overlay-smart.png \
     --stripe-threshold 0.28
   ```
-  The `--stripe-threshold`, `--horizontal-cluster-gap`, and `--vertical-cluster-gap`
-  flags allow fine-grain tuning for different imagery.
-- Need raw OSM parking-space polygons? Use the Overpass helper:
+The `--stripe-threshold`, `--horizontal-cluster-gap`, and `--vertical-cluster-gap`
+flags allow fine-grain tuning for different imagery.
+
+- Need raw OSM parking-space polygons for a custom box? Use the helper:
   ```bash
   cd api
   source ../.venv/bin/activate
@@ -77,3 +78,13 @@ VITE_API_BASE="https://your-api.example.com" npm run dev
     --out data/osm/parking_spaces_lane_north.geojson
   ```
   Adjust the bounding box for the area you care about. The script writes a GeoJSON FeatureCollection with each `amenity=parking_space` feature and its tags.
+
+- For campus-wide parking lots **and** stalls, run:
+  ```bash
+  cd api
+  source ../.venv/bin/activate
+  python scripts/fetch_osu_parking_data.py \
+    --south 40.0000 --west -83.0325 --north 40.0180 --east -83.0085
+  ```
+  It saves `data/osm/parking_lots_osu.geojson` and `data/osm/parking_spaces_osu.geojson`,
+  which the frontend overlays when you zoom in on any OSU lot.

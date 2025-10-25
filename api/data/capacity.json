@@ -1,66 +1,58 @@
 {
-  "osu-parking-lot-c-north": [
+  "lot-way-38911611": [
     {
-      "capacity": 0,
-      "occupied": 0,
+      "capacity": 441,
+      "occupied": 1,
       "source": "seed",
-      "observed_at": "2025-10-25T18:04:23.116Z"
+      "observed_at": "2025-10-25T20:59:10.250Z"
     },
     {
-      "capacity": 0,
-      "occupied": 0,
+      "capacity": 441,
+      "occupied": 1,
       "source": "mock",
-      "observed_at": "2025-10-25T18:10:00.015Z"
-    },
-    {
-      "capacity": 0,
-      "occupied": 0,
-      "source": "mock",
-      "observed_at": "2025-10-25T18:20:00.067Z"
-    },
-    {
-      "capacity": 0,
-      "occupied": 0,
-      "source": "mock",
-      "observed_at": "2025-10-25T18:30:00.015Z"
-    },
-    {
-      "capacity": 0,
-      "occupied": 0,
-      "source": "mock",
-      "observed_at": "2025-10-25T18:40:00.014Z"
+      "observed_at": "2025-10-25T21:00:00.014Z"
     }
   ],
-  "stadium-lot-east": [
+  "lot-way-39115920": [
     {
-      "capacity": 180,
-      "occupied": 65,
+      "capacity": 38,
+      "occupied": 0,
       "source": "seed",
-      "observed_at": "2025-10-25T18:04:23.116Z"
+      "observed_at": "2025-10-25T20:59:10.251Z"
     },
     {
-      "capacity": 180,
-      "occupied": 64,
+      "capacity": 38,
+      "occupied": 1,
       "source": "mock",
-      "observed_at": "2025-10-25T18:10:00.015Z"
+      "observed_at": "2025-10-25T21:00:00.014Z"
+    }
+  ],
+  "lot-way-275147287": [
+    {
+      "capacity": 51,
+      "occupied": 0,
+      "source": "seed",
+      "observed_at": "2025-10-25T20:59:10.252Z"
     },
     {
-      "capacity": 180,
-      "occupied": 66,
+      "capacity": 51,
+      "occupied": 0,
       "source": "mock",
-      "observed_at": "2025-10-25T18:20:00.067Z"
+      "observed_at": "2025-10-25T21:00:00.014Z"
+    }
+  ],
+  "lot-way-444966505": [
+    {
+      "capacity": 435,
+      "occupied": 0,
+      "source": "seed",
+      "observed_at": "2025-10-25T20:59:10.252Z"
     },
     {
-      "capacity": 180,
-      "occupied": 68,
+      "capacity": 435,
+      "occupied": 0,
       "source": "mock",
-      "observed_at": "2025-10-25T18:30:00.015Z"
-    },
-    {
-      "capacity": 180,
-      "occupied": 71,
-      "source": "mock",
-      "observed_at": "2025-10-25T18:40:00.014Z"
+      "observed_at": "2025-10-25T21:00:00.014Z"
     }
   ]
 }
