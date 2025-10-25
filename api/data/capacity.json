@@ -1,0 +1,66 @@
+{
+  "osu-parking-lot-c-north": [
+    {
+      "capacity": 0,
+      "occupied": 0,
+      "source": "seed",
+      "observed_at": "2025-10-25T18:04:23.116Z"
+    },
+    {
+      "capacity": 0,
+      "occupied": 0,
+      "source": "mock",
+      "observed_at": "2025-10-25T18:10:00.015Z"
+    },
+    {
+      "capacity": 0,
+      "occupied": 0,
+      "source": "mock",
+      "observed_at": "2025-10-25T18:20:00.067Z"
+    },
+    {
+      "capacity": 0,
+      "occupied": 0,
+      "source": "mock",
+      "observed_at": "2025-10-25T18:30:00.015Z"
+    },
+    {
+      "capacity": 0,
+      "occupied": 0,
+      "source": "mock",
+      "observed_at": "2025-10-25T18:40:00.014Z"
+    }
+  ],
+  "stadium-lot-east": [
+    {
+      "capacity": 180,
+      "occupied": 65,
+      "source": "seed",
+      "observed_at": "2025-10-25T18:04:23.116Z"
+    },
+    {
+      "capacity": 180,
+      "occupied": 64,
+      "source": "mock",
+      "observed_at": "2025-10-25T18:10:00.015Z"
+    },
+    {
+      "capacity": 180,
+      "occupied": 66,
+      "source": "mock",
+      "observed_at": "2025-10-25T18:20:00.067Z"
+    },
+    {
+      "capacity": 180,
+      "occupied": 68,
+      "source": "mock",
+      "observed_at": "2025-10-25T18:30:00.015Z"
+    },
+    {
+      "capacity": 180,
+      "occupied": 71,
+      "source": "mock",
+      "observed_at": "2025-10-25T18:40:00.014Z"
+    }
+  ]
+}

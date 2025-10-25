@@ -1,0 +1,2 @@
+import { Outlet, Link } from 'react-router-dom'
+export default function App(){return(<div className='h-screen flex flex-col'><nav className='flex items-center justify-between px-4 h-12 bg-white border-b'><div className='font-semibold'>OSU Smart Parking</div><div className='flex gap-4 text-sm'><Link to='/'>Discover</Link><Link to='/admin'>Admin</Link><a href='https://go.osu.edu' target='_blank' rel='noreferrer'>OSU</a></div></nav><div className='flex-1 overflow-hidden'><Outlet/></div></div>)}

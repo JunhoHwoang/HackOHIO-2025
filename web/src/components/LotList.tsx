@@ -1,0 +1,5 @@
+import { useQuery } from '@tanstack/react-query'
+import { getLots } from '../lib/api'
+import { useApp } from '../state/store'
+import { Link } from 'react-router-dom'
+export default function LotList(){const loc=useApp(s=>s.userLocation);const filters=useApp(s=>s.filters);const near=loc?`${loc.lat},${loc.lng}`:undefined;const { data }=useQuery({queryKey:['lots',near,filters.permit],queryFn:()=>getLots({near,radius:2000,permit:filters.permit})});return(<div className='divide-y'>{(data||[]).map((l:any)=>(<Link key={l.id} to={`/lot/${l.id}`} className='block p-3 hover:bg-neutral-50'><div className='flex items-center justify-between'><div className='font-medium'>{l.name}</div><div className='text-sm'>{l.counts.open} open / {l.counts.total}</div></div><div className='text-xs text-gray-500'>{l.permit_types.join(', ')} {l.distanceMeters?`• ${(l.distanceMeters/1609.34).toFixed(2)} mi`:''}</div></Link>))}{!data?.length&&<div className='p-3 text-sm text-gray-600'>No lots found in range.</div>}</div>) }

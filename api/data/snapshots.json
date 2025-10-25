@@ -1,0 +1,62 @@
+{
+  "osu-parking-lot-c-north": [
+    {
+      "weekday": 6,
+      "slot": "14:10",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-25T18:10:00.016Z"
+    },
+    {
+      "weekday": 6,
+      "slot": "14:20",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-25T18:20:00.068Z"
+    },
+    {
+      "weekday": 6,
+      "slot": "14:30",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-25T18:30:00.016Z"
+    },
+    {
+      "weekday": 6,
+      "slot": "14:40",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-25T18:40:00.015Z"
+    }
+  ],
+  "stadium-lot-east": [
+    {
+      "weekday": 6,
+      "slot": "14:10",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-25T18:10:00.016Z"
+    },
+    {
+      "weekday": 6,
+      "slot": "14:20",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-25T18:20:00.068Z"
+    },
+    {
+      "weekday": 6,
+      "slot": "14:30",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-25T18:30:00.016Z"
+    },
+    {
+      "weekday": 6,
+      "slot": "14:40",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-25T18:40:00.015Z"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "stadium-lot-northeast.png": {
+    "lotId": "osu-parking-lot-c-north",
+    "url": "/images/stadium-lot-northeast.png",
+    "captured_at": "2025-10-25T18:04:23.116Z",
+    "source": "seed"
+  },
+  "stadium-lot-east.png": {
+    "lotId": "stadium-lot-east",
+    "url": "/images/stadium-lot-east.png",
+    "captured_at": "2025-10-25T18:04:23.116Z",
+    "source": "seed"
+  }
+}
