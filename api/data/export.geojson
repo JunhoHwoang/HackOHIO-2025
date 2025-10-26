@@ -1,0 +1,454 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2025-10-25T23:47:42Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/30172346",
+        "access": "yes",
+        "addr:city": "Columbus",
+        "addr:housenumber": "1780",
+        "addr:postcode": "43210",
+        "addr:state": "OH",
+        "addr:street": "College Road",
+        "amenity": "parking",
+        "building": "parking",
+        "capacity": "604",
+        "fee": "yes",
+        "name": "Ohio Union North Parking Garage",
+        "parking": "multi-storey",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0089344,
+          39.9988872
+        ]
+      },
+      "id": "way/30172346"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/30172348",
+        "access": "yes",
+        "addr:city": "Columbus",
+        "addr:housenumber": "1990",
+        "addr:postcode": "43210",
+        "addr:state": "OH",
+        "addr:street": "College Road North",
+        "amenity": "parking",
+        "building": "parking",
+        "building:levels": "6",
+        "capacity": "892",
+        "ele": "231",
+        "fee": "yes",
+        "gnis:feature_id": "2125897",
+        "name": "Arps Garage",
+        "opening_hours": "24/7",
+        "operator": "CampusParc",
+        "parking": "multi-storey",
+        "roof:levels": "0",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0099757,
+          40.0027788
+        ]
+      },
+      "id": "way/30172348"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/38911610",
+        "access": "yes",
+        "amenity": "parking",
+        "building": "parking",
+        "fee": "yes",
+        "name": "Tuttle Park Place Garage",
+        "opening_hours": "24/7",
+        "parking": "multi-storey",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0171588,
+          40.0028646
+        ]
+      },
+      "id": "way/38911610"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/38911612",
+        "addr:city": "Columbus",
+        "addr:housenumber": "271",
+        "addr:postcode": "43210",
+        "addr:state": "OH",
+        "addr:street": "Ives Drive",
+        "amenity": "parking",
+        "building": "parking",
+        "building:levels": "6",
+        "name": "Northwest Garage",
+        "parking": "multi-storey",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0161957,
+          40.0029586
+        ]
+      },
+      "id": "way/38911612"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/158734277",
+        "access": "yes",
+        "addr:city": "Columbus",
+        "addr:housenumber": "2105",
+        "addr:postcode": "43210",
+        "addr:state": "OH",
+        "addr:street": "Neil Avenue",
+        "amenity": "parking",
+        "building": "parking",
+        "capacity": "1296",
+        "fee": "yes",
+        "name": "Lane Avenue Parking Garage",
+        "parking": "multi-storey",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0161687,
+          40.0056248
+        ]
+      },
+      "id": "way/158734277"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/162877497",
+        "access": "yes",
+        "addr:city": "Columbus",
+        "addr:housenumber": "1759",
+        "addr:postcode": "43210",
+        "addr:state": "OH",
+        "addr:street": "North High Street",
+        "amenity": "parking",
+        "building": "parking",
+        "capacity": "790",
+        "fee": "yes",
+        "name": "Ohio Union South Parking Garage",
+        "parking": "multi-storey",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0088786,
+          39.9983604
+        ]
+      },
+      "id": "way/162877497"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/162932157",
+        "addr:city": "Columbus",
+        "addr:country": "US",
+        "addr:county": "Franklin",
+        "addr:housename": "Neil Avenue Garage",
+        "addr:housenumber": "1801",
+        "addr:postcode": "43210",
+        "addr:state": "OH",
+        "addr:street": "Neil Avenue",
+        "amenity": "parking",
+        "building": "parking",
+        "capacity": "978",
+        "lit": "yes",
+        "name": "Neil Avenue Garage",
+        "operator": "The Ohio State University",
+        "parking": "multi-storey",
+        "supervised": "yes",
+        "surface": "concrete",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.017432,
+          39.9976298
+        ]
+      },
+      "id": "way/162932157"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/162932204",
+        "access": "yes",
+        "addr:city": "Columbus",
+        "addr:country": "US",
+        "addr:county": "Franklin",
+        "addr:housename": "SafeAuto Hospitals Garage",
+        "addr:housenumber": "1585",
+        "addr:postcode": "43210",
+        "addr:state": "OH",
+        "addr:street": "Westpark Street",
+        "amenity": "parking",
+        "building": "parking",
+        "capacity": "826",
+        "capacity:disabled": "yes",
+        "fee": "yes",
+        "lit": "yes",
+        "name": "SAFEAUTO Hospitals Garage",
+        "operator": "The Ohio State University",
+        "parking": "multi-storey",
+        "supervised": "yes",
+        "surface": "concrete",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0182685,
+          39.9934358
+        ]
+      },
+      "id": "way/162932204"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/369601354",
+        "access": "yes",
+        "addr:city": "Columbus",
+        "addr:country": "US",
+        "addr:county": "Franklin",
+        "addr:housename": "9th Avenue East Garage",
+        "addr:housenumber": "345",
+        "addr:postcode": "43210",
+        "addr:state": "OH",
+        "addr:street": "West Ninth Avenue",
+        "amenity": "parking",
+        "building": "parking",
+        "capacity": "991",
+        "capacity:disabled": "yes",
+        "fee": "yes",
+        "lit": "yes",
+        "name": "9th Avenue East Garage",
+        "note": "Visitor & Keycard",
+        "operator": "The Ohio State University",
+        "parking": "multi-storey",
+        "source": "OSU Map",
+        "supervised": "yes",
+        "surface": "concrete",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0155911,
+          39.9929789
+        ]
+      },
+      "id": "way/369601354"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/369601355",
+        "access": "yes",
+        "addr:city": "Columbus",
+        "addr:country": "US",
+        "addr:county": "Franklin",
+        "addr:housename": "9th Avenue West Garage",
+        "addr:housenumber": "355",
+        "addr:postcode": "43210",
+        "addr:state": "OH",
+        "addr:street": "West Ninth Avenue",
+        "amenity": "parking",
+        "building": "parking",
+        "capacity": "1057",
+        "capacity:disabled": "yes",
+        "lit": "yes",
+        "name": "9th Avenue West Garage",
+        "note": "Staff Only",
+        "operator": "The Ohio State University",
+        "parking": "multi-storey",
+        "source": "OSU Map",
+        "supervised": "yes",
+        "surface": "concrete",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0166509,
+          39.9927358
+        ]
+      },
+      "id": "way/369601355"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/373547727",
+        "access": "yes",
+        "addr:city": "Columbus",
+        "addr:country": "US",
+        "addr:county": "Franklin",
+        "addr:housename": "11th Avenue Garage",
+        "addr:housenumber": "229",
+        "addr:postcode": "43210",
+        "addr:state": "OH",
+        "addr:street": "West Eleventh Avenue",
+        "amenity": "parking",
+        "building": "parking",
+        "capacity": "664",
+        "fee": "yes",
+        "lit": "yes",
+        "name": "11th Avenue Garage",
+        "operator": "The Ohio State University",
+        "parking": "multi-storey",
+        "source": "Bing, OSU Map",
+        "supervised": "yes",
+        "surface": "concrete",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0130164,
+          39.9951414
+        ]
+      },
+      "id": "way/373547727"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/373704487",
+        "access": "yes",
+        "addr:city": "Columbus",
+        "addr:country": "US",
+        "addr:county": "Franklin",
+        "addr:housename": "12th Avenue Garage",
+        "addr:housenumber": "340",
+        "addr:postcode": "43210",
+        "addr:state": "OH",
+        "addr:street": "West Twelfth Avenue",
+        "amenity": "parking",
+        "building": "parking",
+        "capacity": "642",
+        "lit": "yes",
+        "name": "12th Avenue Garage",
+        "operator": "The Ohio State University",
+        "parking": "multi-storey",
+        "source": "Bing, OSU Map",
+        "supervised": "yes",
+        "surface": "concrete",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0174223,
+          39.9966663
+        ]
+      },
+      "id": "way/373704487"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/396827340",
+        "amenity": "parking",
+        "building": "parking",
+        "name": "West Lane Garage",
+        "parking": "multi-storey",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0179619,
+          40.0072108
+        ]
+      },
+      "id": "way/396827340"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/732445629",
+        "amenity": "parking",
+        "building": "parking",
+        "name": "Wexner Medical Center Garage",
+        "opening_date": "2020-12-21",
+        "parking": "multi-storey",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0213756,
+          39.9931589
+        ]
+      },
+      "id": "way/732445629"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/838647044",
+        "amenity": "parking",
+        "building": "parking",
+        "parking": "multi-storey",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0354147,
+          40.0011224
+        ]
+      },
+      "id": "way/838647044"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/910894653",
+        "amenity": "parking",
+        "building": "parking",
+        "name": "Old Cannon Garage",
+        "parking": "multi-storey",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0198601,
+          39.99174
+        ]
+      },
+      "id": "way/910894653"
+    }
+  ]
+}
