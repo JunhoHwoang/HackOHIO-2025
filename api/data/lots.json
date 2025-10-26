@@ -1,7 +1,7 @@
 [
   {
     "id": "lot-way-38911611",
-    "name": "Saint John's Arena Parking",
+    "name": "Stadium Northeast Parking",
     "code": null,
     "campus": "Columbus",
     "centroid": {
@@ -571,7 +571,7 @@
   },
   {
     "id": "lot-way-444966505",
-    "name": "Stadium Northeast Parking",
+    "name": "Saint John's Arena Parking",
     "code": null,
     "campus": "Columbus",
     "centroid": {

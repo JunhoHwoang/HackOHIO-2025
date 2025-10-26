@@ -27,8 +27,8 @@ const OCCUPIED_SPACE_IDS = new Set(sourceSlots.filter((slot) => slot?.occupied).
 console.log('Loaded occupied slots', OCCUPIED_SPACE_IDS.size);
 const LOT_NAME_OVERRIDES = {
   "way/39115920": "Stadium Southeast Parking",
-  "way/38911611": "Saint John's Arena Parking",
-  "way/444966505": "Stadium Northeast Parking",
+  "way/38911611": "Stadium Northeast Parking",
+  "way/444966505": "Saint John's Arena Parking",
   "way/275147287": "Stadium East Parking"
 };
 const LOT_PERMIT_OVERRIDES = {
