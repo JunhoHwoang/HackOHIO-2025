@@ -1,288 +1,253 @@
 #!/usr/bin/env python3
-"""
-YOLO Training Script for Parking Space Detection
-This script trains a YOLO model on parking space detection data using Ultralytics.
-"""
+"""Train a MobileNetV3-Small classifier on per-slot parking data."""
 
-import sys
-import xml.etree.ElementTree as ET
-import pandas as pd
+from __future__ import annotations
+
+import argparse
+import random
+from dataclasses import dataclass
 from pathlib import Path
-import yaml
-import shutil
-from typing import Dict
+from typing import Optional, Sequence, Tuple
 
-# Import YOLO from ultralytics
-try:
-    from ultralytics import YOLO
-    print("Using Ultralytics YOLO for training")
-except ImportError:
-    print("Ultralytics not available. Please install it with: pip install ultralytics")
-    sys.exit(1)
+import numpy as np
+import pandas as pd
+import torch
+from PIL import Image
+from torch import nn, optim
+from torch.utils.data import DataLoader, Dataset
+from torchvision import models, transforms
 
-class ParkingDatasetConverter:
-    """Convert parking dataset from CVAT XML format to YOLO format"""
-    
-    def __init__(self, data_dir: str):
-        self.data_dir = Path(data_dir)
-        self.classes = {
-            'free_parking_space': 0,
-            'not_free_parking_space': 1, 
-            'partially_free_parking_space': 2
-        }
-        self.class_names = list(self.classes.keys())
-        
-    def parse_xml_annotations(self, xml_path: str) -> Dict:
-        """Parse CVAT XML annotations"""
-        tree = ET.parse(xml_path)
-        root = tree.getroot()
-        
-        annotations = {}
-        
-        for image in root.findall('image'):
-            image_name = image.get('name')
-            width = int(image.get('width'))
-            height = int(image.get('height'))
-            
-            boxes = []
-            
-            # Handle polygon annotations
-            for polygon in image.findall('polygon'):
-                label = polygon.get('label')
-                if label in self.classes:
-                    points_str = polygon.get('points')
-                    # Parse points: "x1,y1;x2,y2;x3,y3;..."
-                    points = []
-                    for point_str in points_str.split(';'):
-                        x, y = map(float, point_str.split(','))
-                        points.append((x, y))
-                    
-                    # Convert polygon to bounding box
-                    x_coords = [p[0] for p in points]
-                    y_coords = [p[1] for p in points]
-                    
-                    xtl = min(x_coords)
-                    ytl = min(y_coords)
-                    xbr = max(x_coords)
-                    ybr = max(y_coords)
-                    
-                    # Convert to YOLO format (center_x, center_y, width, height) normalized
-                    center_x = (xtl + xbr) / 2 / width
-                    center_y = (ytl + ybr) / 2 / height
-                    box_width = (xbr - xtl) / width
-                    box_height = (ybr - ytl) / height
-                    
-                    boxes.append({
-                        'class_id': self.classes[label],
-                        'center_x': center_x,
-                        'center_y': center_y,
-                        'width': box_width,
-                        'height': box_height
-                    })
-            
-            # Handle box annotations (if any)
-            for box in image.findall('box'):
-                label = box.get('label')
-                if label in self.classes:
-                    xtl = float(box.get('xtl'))
-                    ytl = float(box.get('ytl'))
-                    xbr = float(box.get('xbr'))
-                    ybr = float(box.get('ybr'))
-                    
-                    # Convert to YOLO format (center_x, center_y, width, height) normalized
-                    center_x = (xtl + xbr) / 2 / width
-                    center_y = (ytl + ybr) / 2 / height
-                    box_width = (xbr - xtl) / width
-                    box_height = (ybr - ytl) / height
-                    
-                    boxes.append({
-                        'class_id': self.classes[label],
-                        'center_x': center_x,
-                        'center_y': center_y,
-                        'width': box_width,
-                        'height': box_height
-                    })
-            
-            if boxes:  # Only add if there are annotations
-                annotations[image_name] = {
-                    'boxes': boxes,
-                    'image_width': width,
-                    'image_height': height
-                }
-        
-        return annotations
-    
-    def create_yolo_dataset(self, output_dir: str, train_split: float = 0.8):
-        """Create YOLO format dataset"""
-        output_path = Path(output_dir)
-        output_path.mkdir(exist_ok=True)
-        
-        # Create directory structure
-        train_images_dir = output_path / 'images' / 'train'
-        val_images_dir = output_path / 'images' / 'val'
-        train_labels_dir = output_path / 'labels' / 'train'
-        val_labels_dir = output_path / 'labels' / 'val'
-        
-        for dir_path in [train_images_dir, val_images_dir, train_labels_dir, val_labels_dir]:
-            dir_path.mkdir(parents=True, exist_ok=True)
-        
-        # Parse annotations
-        xml_path = self.data_dir / 'annotations.xml'
-        annotations = self.parse_xml_annotations(str(xml_path))
-        
-        # Read CSV for image-mask mapping
-        csv_path = self.data_dir / 'parking.csv'
-        df = pd.read_csv(csv_path)
-        
-        # Split data
-        total_images = len(df)
-        train_count = int(total_images * train_split)
-        
-        for idx, row in df.iterrows():
-            image_name = row['image']
-            image_path = self.data_dir / image_name
-            
-            if not image_path.exists():
-                print(f"Warning: Image {image_path} not found")
-                continue
-            
-            # Determine if train or val
-            is_train = idx < train_count
-            target_image_dir = train_images_dir if is_train else val_images_dir
-            target_label_dir = train_labels_dir if is_train else val_labels_dir
-            
-            # Copy image
-            image_filename = Path(image_name).name
-            shutil.copy2(image_path, target_image_dir / image_filename)
-            
-            # Create label file
-            label_filename = Path(image_filename).stem + '.txt'
-            label_path = target_label_dir / label_filename
-            
-            # Get annotations for this image
-            if image_name in annotations:
-                with open(label_path, 'w', encoding='utf-8') as f:
-                    for box in annotations[image_name]['boxes']:
-                        f.write(f"{box['class_id']} {box['center_x']:.6f} {box['center_y']:.6f} "
-                               f"{box['width']:.6f} {box['height']:.6f}\n")
-            else:
-                # Create empty label file if no annotations
-                with open(label_path, 'w', encoding='utf-8') as f:
-                    pass
-        
-        # Create data.yaml file
-        data_yaml = {
-            'path': str(output_path.absolute()),
-            'train': 'images/train',
-            'val': 'images/val',
-            'nc': len(self.classes),
-            'names': self.class_names
-        }
-        
-        with open(output_path / 'data.yaml', 'w', encoding='utf-8') as f:
-            yaml.dump(data_yaml, f)
-        
-        print(f"Dataset created successfully at {output_path}")
-        print(f"Training images: {train_count}")
-        print(f"Validation images: {total_images - train_count}")
-        print(f"Classes: {self.class_names}")
-        
-        return str(output_path / 'data.yaml')
+import os
 
-class YOLOTrainer:
-    """YOLO training class using Ultralytics"""
-    
-    def __init__(self, data_yaml_path: str, model_size: str = 'yolov8n'):
-        self.data_yaml_path = data_yaml_path
-        self.model_size = model_size
-        
-        # Detect best available device (prioritize MPS for Mac GPU)
-        import torch
-        if torch.backends.mps.is_available():
-            self.device = 'mps'
-            print("Using Mac GPU (MPS) for training")
-        elif torch.cuda.is_available():
-            self.device = 'cuda'
-            print("Using NVIDIA GPU (CUDA) for training")
-        else:
-            self.device = 'cpu'
-            print("Using CPU for training")
-            
-        print(f"Using model: {model_size}")
-        
-        # Load data config
-        with open(data_yaml_path, 'r', encoding='utf-8') as f:
-            self.data_config = yaml.safe_load(f)
-    
-    def train(self, epochs: int = 100, batch_size: int = 16):
-        """Train using Ultralytics YOLO"""
-        print("Training with Ultralytics YOLO")
-        
-        # Initialize model
-        model = YOLO(f'{self.model_size}.pt')
-        
-        # Train the model with Mac GPU support
-        results = model.train(
-            data=self.data_yaml_path,
-            epochs=epochs,
-            batch=batch_size,
-            imgsz=640,
-            device=self.device,  # Use detected device (mps, cuda, or cpu)
-            project='./runs',
-            name='parking_detection',
-            exist_ok=True,
-            patience=50,
-            save=True,
-            plots=True,
-            amp=True,  # Enable automatic mixed precision
-            workers=4,  # Reduce workers for Mac
-            cache=False,  # Disable caching to save memory
+os.environ.setdefault("PYTORCH_ENABLE_MPS_FALLBACK", "1")
+
+
+@dataclass
+class TrainConfig:
+    dataset_dir: Path
+    output_dir: Path
+    epochs: int
+    batch_size: int
+    lr: float
+    weight_decay: float
+    train_split: float
+    seed: int
+    num_workers: int
+
+
+class SlotDataset(Dataset):
+    def __init__(self, df: pd.DataFrame, root: Path, transform: transforms.Compose):
+        self.df = df.reset_index(drop=True)
+        self.root = root
+        self.transform = transform
+
+    def __len__(self) -> int:  # type: ignore[override]
+        return len(self.df)
+
+    def __getitem__(self, idx: int) -> Tuple[torch.Tensor, int]:  # type: ignore[override]
+        row = self.df.iloc[idx]
+        path = self.root / row["image_path"]
+        image = Image.open(path).convert("RGB")
+        return self.transform(image), int(row["label_id"])
+
+
+def parse_args(argv: Optional[Sequence[str]] = None) -> TrainConfig:
+    parser = argparse.ArgumentParser(description="MobileNetV3-Small slot classifier")
+    parser.add_argument("--dataset-dir", type=Path, default=Path("./slot_dataset"), help="Directory with metadata.csv and images/")
+    parser.add_argument("--output-dir", type=Path, default=Path("./runs/mobilenet"), help="Where to store checkpoints and logs")
+    parser.add_argument("--epochs", type=int, default=30)
+    parser.add_argument("--batch-size", type=int, default=32)
+    parser.add_argument("--lr", type=float, default=1e-3)
+    parser.add_argument("--weight-decay", type=float, default=1e-4)
+    parser.add_argument("--train-split", type=float, default=0.8)
+    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--num-workers", type=int, default=4)
+    args = parser.parse_args(argv)
+    return TrainConfig(
+        dataset_dir=args.dataset_dir,
+        output_dir=args.output_dir,
+        epochs=args.epochs,
+        batch_size=args.batch_size,
+        lr=args.lr,
+        weight_decay=args.weight_decay,
+        train_split=args.train_split,
+        seed=args.seed,
+        num_workers=args.num_workers,
+    )
+
+
+def set_seed(seed: int) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+
+
+def resolve_device() -> torch.device:
+    if torch.backends.mps.is_available():
+        print("⚙️  Using Mac GPU (MPS)")
+        return torch.device("mps")
+    if torch.cuda.is_available():
+        print("⚙️  Using CUDA GPU")
+        return torch.device("cuda")
+    print("⚙️  Using CPU")
+    return torch.device("cpu")
+
+
+def load_metadata(cfg: TrainConfig) -> Tuple[pd.DataFrame, pd.DataFrame, int]:
+    metadata_path = cfg.dataset_dir / "metadata.csv"
+    if not metadata_path.exists():
+        raise FileNotFoundError(
+            f"metadata.csv not found in {cfg.dataset_dir}. Run extract_slots_xml.py or extract_slots_json.py first to create slot samples."
         )
-        
-        return model, results
 
-def main():
-    """Main training function"""
-    # Configuration optimized for Mac
-    DATA_DIR = "./data"
-    OUTPUT_DIR = "./yolo_dataset"
-    EPOCHS = 50  # Reduced for faster training on Mac
-    BATCH_SIZE = 8  # Smaller batch size for Mac GPU memory
-    MODEL_SIZE = "yolov8n"  # yolov8n, yolov8s, yolov8m, yolov8l, yolov8x
-    
-    print("Starting parking space detection training...")
-    print(f"Data directory: {DATA_DIR}")
-    print(f"Output directory: {OUTPUT_DIR}")
-    print(f"Model size: {MODEL_SIZE}")
-    print(f"Epochs: {EPOCHS}")
-    print(f"Batch size: {BATCH_SIZE}")
-    
-    # Convert dataset
-    print("\n1. Converting dataset to YOLO format...")
-    converter = ParkingDatasetConverter(DATA_DIR)
-    data_yaml_path = converter.create_yolo_dataset(OUTPUT_DIR)
-    
-    # Train model
-    print("\n2. Starting training...")
-    trainer = YOLOTrainer(data_yaml_path, MODEL_SIZE)
-    
-    try:
-        print("Training with Ultralytics YOLO...")
-        model, results = trainer.train(EPOCHS, BATCH_SIZE)
-        print("Training completed successfully!")
-        print(f"Results: {results}")
-        print("Check the ./runs/parking_detection directory for training results and model weights.")
-            
-    except ImportError as e:
-        print(f"Import error: {e}")
-        print("Please install required packages with: pip install ultralytics")
-        return
-    except Exception as e:
-        print(f"Training failed: {e}")
-        print("Please check your environment and dependencies.")
-        return
-    
-    print("\nTraining completed! Check the ./runs directory for results.")
+    df = pd.read_csv(metadata_path)
+    if "label_id" not in df.columns:
+        raise ValueError("metadata.csv must contain a 'label_id' column")
+
+    df = df.sample(frac=1.0, random_state=cfg.seed).reset_index(drop=True)
+    train_len = int(len(df) * cfg.train_split)
+    train_df = df.iloc[:train_len]
+    val_df = df.iloc[train_len:]
+    num_classes = df["label_id"].nunique()
+
+    print(
+        f"Loaded {len(df)} slot samples -> train: {len(train_df)}, val: {len(val_df)}, classes: {num_classes}"
+    )
+    return train_df, val_df, num_classes
+
+
+def build_transforms() -> Tuple[transforms.Compose, transforms.Compose]:
+    normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    resize = transforms.Resize((224, 224))
+
+    train_tf = transforms.Compose(
+        [
+            resize,
+            transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.05),
+            transforms.RandomHorizontalFlip(),
+            transforms.ToTensor(),
+            normalize,
+        ]
+    )
+
+    val_tf = transforms.Compose(
+        [
+            resize,
+            transforms.ToTensor(),
+            normalize,
+        ]
+    )
+    return train_tf, val_tf
+
+
+def build_model(num_classes: int) -> nn.Module:
+    weights = models.MobileNet_V3_Small_Weights.IMAGENET1K_V1
+    model = models.mobilenet_v3_small(weights=weights)
+    in_features = model.classifier[-1].in_features
+    model.classifier[-1] = nn.Linear(in_features, num_classes)
+    return model
+
+
+def train_one_epoch(model: nn.Module, loader: DataLoader, criterion: nn.Module, optimizer: optim.Optimizer, device: torch.device) -> Tuple[float, float]:
+    model.train()
+    running_loss = 0.0
+    correct = 0
+    total = 0
+
+    for images, labels in loader:
+        images, labels = images.to(device), labels.to(device)
+        optimizer.zero_grad()
+        logits = model(images)
+        loss = criterion(logits, labels)
+        loss.backward()
+        optimizer.step()
+
+        running_loss += loss.item() * labels.size(0)
+        preds = torch.argmax(logits, dim=1)
+        correct += (preds == labels).sum().item()
+        total += labels.size(0)
+
+    return running_loss / total, correct / total if total else 0.0
+
+
+def evaluate(model: nn.Module, loader: DataLoader, criterion: nn.Module, device: torch.device) -> Tuple[float, float]:
+    model.eval()
+    running_loss = 0.0
+    correct = 0
+    total = 0
+
+    with torch.no_grad():
+        for images, labels in loader:
+            images, labels = images.to(device), labels.to(device)
+            logits = model(images)
+            loss = criterion(logits, labels)
+            running_loss += loss.item() * labels.size(0)
+            preds = torch.argmax(logits, dim=1)
+            correct += (preds == labels).sum().item()
+            total += labels.size(0)
+
+    return running_loss / total, correct / total if total else 0.0
+
+
+def main(cfg: Optional[TrainConfig] = None) -> None:
+    if cfg is None:
+        cfg = parse_args()
+    cfg.output_dir.mkdir(parents=True, exist_ok=True)
+    set_seed(cfg.seed)
+
+    train_df, val_df, num_classes = load_metadata(cfg)
+    train_tf, val_tf = build_transforms()
+
+    train_dataset = SlotDataset(train_df, cfg.dataset_dir, train_tf)
+    val_dataset = SlotDataset(val_df, cfg.dataset_dir, val_tf)
+
+    train_loader = DataLoader(train_dataset, batch_size=cfg.batch_size, shuffle=True, num_workers=cfg.num_workers, pin_memory=True)
+    val_loader = DataLoader(val_dataset, batch_size=cfg.batch_size, shuffle=False, num_workers=cfg.num_workers, pin_memory=True)
+
+    device = resolve_device()
+    model = build_model(num_classes).to(device)
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.AdamW(model.parameters(), lr=cfg.lr, weight_decay=cfg.weight_decay)
+    scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=cfg.epochs)
+
+    best_acc = 0.0
+    best_path = cfg.output_dir / "mobilenet_v3_small_best.pth"
+    history_path = cfg.output_dir / "training_history.csv"
+
+    with history_path.open("w", encoding="utf-8") as history_file:
+        history_file.write("epoch,train_loss,train_acc,val_loss,val_acc,lr\n")
+        for epoch in range(1, cfg.epochs + 1):
+            train_loss, train_acc = train_one_epoch(model, train_loader, criterion, optimizer, device)
+            val_loss, val_acc = evaluate(model, val_loader, criterion, device)
+            scheduler.step()
+
+            lr = optimizer.param_groups[0]["lr"]
+            history_file.write(f"{epoch},{train_loss:.4f},{train_acc:.4f},{val_loss:.4f},{val_acc:.4f},{lr:.6f}\n")
+            history_file.flush()
+
+            print(
+                f"Epoch {epoch:02d}/{cfg.epochs} | train_loss={train_loss:.4f} acc={train_acc:.3f} | "
+                f"val_loss={val_loss:.4f} acc={val_acc:.3f}"
+            )
+
+            if val_acc > best_acc:
+                best_acc = val_acc
+                torch.save(
+                    {
+                        "model_state": model.state_dict(),
+                        "optimizer_state": optimizer.state_dict(),
+                        "config": cfg.__dict__,
+                        "val_acc": val_acc,
+                    },
+                    best_path,
+                )
+                print(f"✨ Saved new best model to {best_path} (val_acc={val_acc:.3f})")
+
+    print("Training complete! Best validation accuracy:", round(best_acc, 3))
+    print(f"Checkpoints and logs stored in {cfg.output_dir}")
+
 
 if __name__ == "__main__":
+    os.environ.setdefault("PYTORCH_ENABLE_MPS_FALLBACK", "1")
     main()

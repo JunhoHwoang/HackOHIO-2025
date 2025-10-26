@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<annotations>
+  <image id="26" name="images/32.png" width="968" height="347">
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="856.30,243.30;905.70,242.80;906.60,333.12;855.41,333.57" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="free_parking_space" occluded="0" source="manual" points="63.90,112.40;111.70,112.60;110.02,10.92;61.80,10.01" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="free_parking_space" occluded="0" source="manual" points="115.05,11.15;166.02,10.47;165.10,112.20;115.30,112.50" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="168.90,112.10;217.40,111.90;217.40,11.20;168.70,11.05" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="221.80,111.70;271.40,112.10;270.60,10.80;221.50,11.00" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="free_parking_space" occluded="0" source="manual" points="274.40,111.60;323.80,110.80;321.88,9.84;273.88,10.94" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="325.72,110.50;377.83,110.23;375.60,9.80;326.26,10.39" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="381.39,110.23;427.47,110.50;428.56,10.39;379.50,10.90" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="432.40,109.70;481.80,110.00;482.32,10.94;431.03,10.12" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="free_parking_space" occluded="0" source="manual" points="485.60,110.50;535.00,110.20;533.60,9.30;485.61,10.12" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="538.54,110.77;586.27,111.32;586.00,9.80;537.72,10.67" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="590.10,111.60;639.50,110.50;639.20,9.84;589.83,9.84" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="642.77,11.22;693.23,10.94;693.80,111.60;641.39,110.77" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="697.62,11.76;746.44,11.49;747.80,113.50;696.80,112.69" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="750.32,10.38;798.73,11.01;801.00,114.30;749.70,113.50" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="803.97,11.17;852.54,10.69;852.50,114.80;803.49,113.86" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="856.50,10.06;904.44,10.06;905.40,115.60;856.80,114.70" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="909.83,10.38;953.32,9.90;956.20,115.30;909.40,114.80" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="free_parking_space" occluded="0" source="manual" points="12.18,236.33;61.54,237.43;62.37,332.05;13.27,333.15" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="free_parking_space" occluded="0" source="manual" points="65.40,237.40;115.30,238.00;114.48,332.87;66.21,332.87" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="118.59,332.05;167.14,332.87;168.23,237.98;119.14,237.16" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="171.10,237.80;218.70,238.40;219.79,334.52;170.43,332.87" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="222.77,238.90;272.94,239.20;273.10,333.20;224.10,332.60" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="276.70,332.70;324.30,333.30;324.60,239.30;275.40,239.10" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="327.50,239.70;377.70,239.40;377.40,332.70;327.60,333.40" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="free_parking_space" occluded="0" source="manual" points="381.70,239.60;429.40,239.70;430.60,333.00;381.50,333.10" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="434.11,332.74;481.78,331.30;482.50,239.70;432.53,239.57" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="9.00,9.09;59.06,10.24;59.10,111.60;9.00,112.40" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="910.26,243.29;953.46,242.61;953.00,332.89;907.98,332.66" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="803.30,243.07;852.44,243.07;852.40,333.60;803.10,333.30" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="750.27,241.47;799.20,242.80;799.64,332.20;750.04,331.97" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="697.48,331.75;745.47,331.97;746.20,241.20;696.33,240.32" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="643.77,331.52;693.82,332.20;693.40,241.20;642.85,240.09" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="590.97,331.97;639.20,332.43;639.88,240.78;589.14,240.32" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="540.00,332.43;587.77,333.12;586.40,240.78;539.09,240.09" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+    <polygon label="not_free_parking_space" occluded="0" source="manual" points="486.30,240.10;536.58,240.55;535.89,333.12;486.75,332.89" z_order="0">
+      <attribute name="not_visible">false</attribute>
+    </polygon>
+  </image>
+</annotations>
