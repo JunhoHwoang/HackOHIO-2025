@@ -3,7 +3,7 @@
 A full-stack prototype for a real-time smart parking tracker at The Ohio State University, built during the HackOHIO 2025 hackathon.
 This project combines a computer vision backend that detects occupied stalls with a React + Leaflet web app for live visualization.
 
-***
+____
 
 Two-part app:
 - `api/`: Node/Express mock API (ESM). Seeds mock OSU lots & a demo image.
