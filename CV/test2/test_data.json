@@ -1,0 +1,1647 @@
+{
+  "parking_lot_c": {    
+    "size": 5139092,
+    "regions": [
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2275,
+          "y": 197,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331884
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2203,
+          "y": 190,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331885
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2129,
+          "y": 178,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331886
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2053,
+          "y": 174,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331887
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1978,
+          "y": 165,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331888
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1906,
+          "y": 163,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331889
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1835,
+          "y": 161,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331890
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1766,
+          "y": 161,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331891
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1692,
+          "y": 161,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331892
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1619,
+          "y": 161,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331893
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1547,
+          "y": 159,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331894
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1474,
+          "y": 161,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331895
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1401,
+          "y": 161,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331896
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1329,
+          "y": 159,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331897
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1254,
+          "y": 157,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331898
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1185,
+          "y": 157,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331899
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1113,
+          "y": 155,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331900
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1042,
+          "y": 157,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331901
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 966,
+          "y": 155,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331902
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 893,
+          "y": 155,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331903
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 822,
+          "y": 155,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331904
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 748,
+          "y": 153,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331905
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 673,
+          "y": 151,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331906
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 601,
+          "y": 149,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331907
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 532,
+          "y": 145,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875331908
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2505,
+          "y": 626,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332249
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2432,
+          "y": 626,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332250
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2359,
+          "y": 628,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332251
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2357,
+          "y": 490,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332252
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2289,
+          "y": 626,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332253
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2287,
+          "y": 486,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332254
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2210,
+          "y": 624,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332255
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2212,
+          "y": 488,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332256
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2139,
+          "y": 626,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332257
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2141,
+          "y": 490,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332258
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2067,
+          "y": 626,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332259
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2071,
+          "y": 484,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332260
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1996,
+          "y": 626,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332261
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1996,
+          "y": 488,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332262
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1921,
+          "y": 624,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332263
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1925,
+          "y": 484,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332264
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1851,
+          "y": 630,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332265
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1851,
+          "y": 490,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332266
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1780,
+          "y": 624,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332267
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1780,
+          "y": 486,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332268
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1705,
+          "y": 626,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332269
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1705,
+          "y": 486,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332270
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1631,
+          "y": 624,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332271
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1633,
+          "y": 486,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332272
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1558,
+          "y": 626,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332273
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1558,
+          "y": 486,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332274
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1488,
+          "y": 626,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332275
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1482,
+          "y": 486,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332276
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1413,
+          "y": 622,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332277
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1411,
+          "y": 484,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332278
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1340,
+          "y": 624,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332279
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1340,
+          "y": 486,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332280
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1268,
+          "y": 620,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332281
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1272,
+          "y": 490,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332282
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1201,
+          "y": 624,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332283
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1199,
+          "y": 484,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332284
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1124,
+          "y": 624,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332285
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1126,
+          "y": 478,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332286
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1052,
+          "y": 620,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332287
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1050,
+          "y": 480,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332288
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 977,
+          "y": 619,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332289
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 979,
+          "y": 486,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332290
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 905,
+          "y": 617,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332291
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 909,
+          "y": 480,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332292
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 836,
+          "y": 617,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332293
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 832,
+          "y": 480,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332294
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 761,
+          "y": 617,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332295
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 763,
+          "y": 476,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332296
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 691,
+          "y": 614,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332297
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 689,
+          "y": 474,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332298
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 620,
+          "y": 616,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332299
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 620,
+          "y": 472,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332300
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 536,
+          "y": 614,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332301
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 534,
+          "y": 470,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332302
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2591,
+          "y": 1104,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332179
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2593,
+          "y": 965,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332180
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2517,
+          "y": 1106,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332181
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2515,
+          "y": 961,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332182
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2444,
+          "y": 1104,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332183
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2440,
+          "y": 963,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332184
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2373,
+          "y": 1102,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332185
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2375,
+          "y": 967,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332186
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2303,
+          "y": 1104,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332187
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2297,
+          "y": 965,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332188
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2230,
+          "y": 1102,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332189
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2226,
+          "y": 963,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332190
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2154,
+          "y": 1102,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332191
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2156,
+          "y": 961,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332192
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2079,
+          "y": 1100,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332193
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2079,
+          "y": 959,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332194
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2004,
+          "y": 1098,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332195
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 2004,
+          "y": 957,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332196
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1936,
+          "y": 1096,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332197
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1936,
+          "y": 957,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332198
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1867,
+          "y": 1096,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332199
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1863,
+          "y": 957,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332200
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1792,
+          "y": 1098,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332201
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1787,
+          "y": 961,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332202
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1720,
+          "y": 1092,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332203
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1720,
+          "y": 961,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332204
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1641,
+          "y": 1096,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332205
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1645,
+          "y": 961,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332206
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1569,
+          "y": 1096,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332207
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1567,
+          "y": 959,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332208
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1494,
+          "y": 1091,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332209
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1498,
+          "y": 957,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332210
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1426,
+          "y": 1095,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332211
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1428,
+          "y": 955,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332212
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1353,
+          "y": 1097,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332213
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1353,
+          "y": 955,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332214
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1284,
+          "y": 1093,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332215
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1282,
+          "y": 951,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332216
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1210,
+          "y": 1095,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332217
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1212,
+          "y": 955,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332218
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1137,
+          "y": 1093,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332219
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1137,
+          "y": 955,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332220
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1066,
+          "y": 1089,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332221
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1072,
+          "y": 951,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332222
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 1000,
+          "y": 1089,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332223
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 998,
+          "y": 953,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332224
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 923,
+          "y": 1091,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332225
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 923,
+          "y": 949,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332226
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 853,
+          "y": 1091,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332227
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 853,
+          "y": 948,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332228
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 782,
+          "y": 1091,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332229
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 782,
+          "y": 949,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332230
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 709,
+          "y": 1089,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332231
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 701,
+          "y": 944,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332232
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 642,
+          "y": 1083,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332233
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 637,
+          "y": 948,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332234
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 566,
+          "y": 1089,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332235
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 558,
+          "y": 953,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332236
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 487,
+          "y": 1083,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332237
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 481,
+          "y": 945,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332238
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 425,
+          "y": 1087,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332239
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 419,
+          "y": 945,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332240
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 346,
+          "y": 1087,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332241
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 348,
+          "y": 943,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332242
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 273,
+          "y": 1089,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332243
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 277,
+          "y": 945,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332244
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 201,
+          "y": 1089,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332245
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 205,
+          "y": 949,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332246
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 130,
+          "y": 1087,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332247
+      },
+      {
+        "shape_attributes": {
+          "name": "rect",
+          "x": 132,
+          "y": 947,
+          "width": 69,
+          "height": 133
+        },
+        "region_attributes": {},
+        "id": 875332248
+      }
+    ],
+    "file_attributes": {}
+  }
+}

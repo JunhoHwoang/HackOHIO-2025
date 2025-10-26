@@ -34,3 +34,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# CV/ML specific files
+CV/data/
+runs/
+yolo_dataset/
+yolov8n.pt
+*.pt
+
