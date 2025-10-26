@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { MapContainer, TileLayer, Marker, Popup, GeoJSON, useMap, CircleMarker } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, GeoJSON, useMap } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { useQuery } from '@tanstack/react-query'
 import L from 'leaflet'
@@ -439,31 +439,6 @@ export default function MapView({ searchQuery = '' }: { searchQuery?: string }) 
         const openSpaces = counts?.open ?? 0
         const totalSpaces = counts?.total ?? 0
         const hasAvailability = openSpaces > 0
-        return (
-          <CircleMarker
-            key={id}
-            center={[lat, lng]}
-            radius={9}
-            pathOptions={{
-              color: hasAvailability ? '#15803d' : '#b91c1c',
-              fillColor: hasAvailability ? '#22c55e' : '#fca5a5',
-              fillOpacity: 0.9,
-              weight: 2,
-            }}
-            eventHandlers={{
-              click: () => setSelectedLotId(id),
-            }}
-          >
-            <Popup>
-              <div className='text-sm'>
-                <div className='font-medium'>{feature.properties?.tags?.name || 'Parking Lot'}</div>
-                <div className='text-xs text-gray-500'>
-                  {openSpaces} open / {totalSpaces}
-                </div>
-              </div>
-            </Popup>
-          </CircleMarker>
-        )
       })}
       {markers.map(({ id, centroid, counts }) => (
         <Marker

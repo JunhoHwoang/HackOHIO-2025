@@ -36,15 +36,14 @@ html,body,#root{height:100%}
   box-shadow:0 1px 3px rgba(0,0,0,0.15);
   white-space:nowrap;
 }
-<<<<<<< HEAD
+
 img.leaflet-marker-icon,
 .leaflet-marker-shadow {
   display: none !important;
 }
-=======
+
 
 mg.leaflet-marker-icon,
 .leaflet-marker-shadow {
   display: none !important;
 }
->>>>>>> 94505a6 (green dot, collect data from database)
