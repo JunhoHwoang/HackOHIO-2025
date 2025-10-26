@@ -8,7 +8,9 @@
     "seed": "node scripts/seed.js"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.76.1",
     "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "express": "^4.19.2",
     "nanoid": "^5.0.7",
     "node-schedule": "^2.1.1"

@@ -1,7 +1,7 @@
 [
   {
     "id": "lot-way-38911611",
-    "name": "Stadium Northeast Parking",
+    "name": "Saint John's Arena Parking",
     "code": null,
     "campus": "Columbus",
     "centroid": {
@@ -233,8 +233,10 @@
         "fee": "yes",
         "parking": "surface"
       },
-      "osmId": "way/38911611"
-    }
+      "osmId": "way/38911611",
+      "pricing": null
+    },
+    "pricing": null
   },
   {
     "id": "lot-way-39115920",
@@ -404,8 +406,10 @@
         "amenity": "parking",
         "parking": "surface"
       },
-      "osmId": "way/39115920"
-    }
+      "osmId": "way/39115920",
+      "pricing": null
+    },
+    "pricing": null
   },
   {
     "id": "lot-way-275147287",
@@ -560,12 +564,14 @@
         "fee": "yes",
         "parking": "surface"
       },
-      "osmId": "way/275147287"
-    }
+      "osmId": "way/275147287",
+      "pricing": null
+    },
+    "pricing": null
   },
   {
     "id": "lot-way-444966505",
-    "name": "Saint John's Arena Parking",
+    "name": "Stadium Northeast Parking",
     "code": null,
     "campus": "Columbus",
     "centroid": {
@@ -964,7 +970,9 @@
         "fee": "yes",
         "parking": "surface"
       },
-      "osmId": "way/444966505"
-    }
+      "osmId": "way/444966505",
+      "pricing": null
+    },
+    "pricing": null
   }
 ]

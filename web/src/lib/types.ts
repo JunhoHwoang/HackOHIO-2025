@@ -21,6 +21,8 @@ export type LotSummary = {
     captured_at: string
     source: string
   } | null
+  pricing?: string | Record<string, any>
+  permits_required?: string[]
   counts: {
     total: number
     occupied: number

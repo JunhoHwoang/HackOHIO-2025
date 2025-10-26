@@ -34,10 +34,10 @@ export default function Filters() {
       <button
         type='button'
         onClick={() => setOpen((o) => !o)}
-        className='inline-flex items-center gap-2 rounded-full border border-rose-200 bg-rose-50 px-4 py-1.5 text-sm font-medium text-rose-700 shadow-sm hover:bg-rose-100 transition-colors'
+        className='inline-flex items-center gap-2 rounded-full border border-osu-scarlet bg-osu-scarlet px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-osu-scarlet-dark transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
       >
         Filters
-        <span className='text-xs text-rose-600/80'>{selected.label}</span>
+        <span className='text-xs text-white/80'>{selected.label}</span>
       </button>
       {open && (
         <div className='absolute right-0 mt-2 w-48 rounded-xl border border-neutral-200 bg-white shadow-lg ring-1 ring-black/5 z-30'>
@@ -45,7 +45,7 @@ export default function Filters() {
             {PERMIT_OPTIONS.map((option) => (
               <label
                 key={option.value || 'any'}
-                className='flex items-center gap-2 px-3 py-1.5 text-sm text-slate-700 hover:bg-neutral-100 cursor-pointer'
+                className='flex items-center gap-2 px-3 py-1.5 text-sm text-osu-gray hover:bg-osu-light cursor-pointer'
               >
                 <input
                   type='radio'
@@ -56,7 +56,7 @@ export default function Filters() {
                     setFilters({ permit: option.value || undefined })
                     setOpen(false)
                   }}
-                  className='text-rose-600 focus:ring-rose-500'
+                  className='text-red-700 focus:ring-red-700'
                 />
                 {option.label}
               </label>

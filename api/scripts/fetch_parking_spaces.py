@@ -6,7 +6,7 @@ Example:
     source ../.venv/bin/activate
     python scripts/fetch_parking_spaces.py \
         --south 40.0028 --west -83.0196 --north 40.0043 --east -83.0176 \
-        --out data/osm/parking_spaces_lane_north.geojson
+        --out data/osm/osu_lane_avenue_parking_spaces.geojson
 
 The script hits the public Overpass API, so be considerate (narrow bbox, low frequency).
 """

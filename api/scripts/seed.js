@@ -27,8 +27,8 @@ const OCCUPIED_SPACE_IDS = new Set(sourceSlots.filter((slot) => slot?.occupied).
 console.log('Loaded occupied slots', OCCUPIED_SPACE_IDS.size);
 const LOT_NAME_OVERRIDES = {
   "way/39115920": "Stadium Southeast Parking",
-  "way/38911611": "Stadium Northeast Parking",
-  "way/444966505": "Saint John's Arena Parking",
+  "way/38911611": "Saint John's Arena Parking",
+  "way/444966505": "Stadium Northeast Parking",
   "way/275147287": "Stadium East Parking"
 };
 const LOT_PERMIT_OVERRIDES = {
@@ -164,8 +164,8 @@ function featureCentroid(feature) {
 }
 
 function generateLotsFromOSM() {
-  const lotsGeo = readJSON(path.join(OSM_DIR, "parking_lots_osu.geojson"), null);
-  const spacesGeo = readJSON(path.join(OSM_DIR, "parking_spaces_osu.geojson"), null);
+  const lotsGeo = readJSON(path.join(OSM_DIR, "osu_campus_parking_lots.geojson"), null);
+  const spacesGeo = readJSON(path.join(OSM_DIR, "osu_campus_parking_spaces.geojson"), null);
   if (!lotsGeo || !lotsGeo.features?.length) return null;
 
   const spaces = (spacesGeo?.features || []).map((feature) => {

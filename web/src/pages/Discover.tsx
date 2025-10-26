@@ -21,8 +21,8 @@ export default function Discover() {
       <section className='flex flex-col gap-5 rounded-3xl bg-white shadow-sm border border-neutral-200 p-5 sm:p-6 lg:p-8'>
         <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-6'>
           <div className='space-y-2'>
-            <h1 className='text-2xl sm:text-3xl font-semibold text-slate-900'>Find your spot in seconds</h1>
-            <p className='text-sm sm:text-base text-slate-600'>
+            <h1 className='text-2xl sm:text-3xl font-semibold text-osu-scarlet'>Find your spot in seconds</h1>
+            <p className='text-sm sm:text-base text-osu-gray'>
               Live availability for OSU lots, garages, and surface parking.
             </p>
           </div>
@@ -37,9 +37,9 @@ export default function Discover() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder='Search by lot name, code, or permit...'
-              className='w-full rounded-full border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm sm:text-base shadow-inner focus:border-rose-300 focus:ring-2 focus:ring-rose-100'
+              className='w-full rounded-full border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm sm:text-base shadow-inner focus:border-red-700 focus:ring-2 focus:ring-red-700/10'
             />
-            <span className='pointer-events-none absolute inset-y-0 right-4 flex items-center text-xs sm:text-sm text-slate-400'>⌘K</span>
+            <span className='pointer-events-none absolute inset-y-0 right-4 flex items-center text-xs sm:text-sm text-gray-500'>⌘K</span>
           </div>
         </div>
       </section>

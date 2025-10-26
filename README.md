@@ -75,7 +75,7 @@ flags allow fine-grain tuning for different imagery.
   source ../.venv/bin/activate
   python scripts/fetch_parking_spaces.py \
     --south 40.0028 --west -83.0196 --north 40.0043 --east -83.0176 \
-    --out data/osm/parking_spaces_lane_north.geojson
+    --out data/osm/osu_lane_avenue_parking_spaces.geojson
   ```
   Adjust the bounding box for the area you care about. The script writes a GeoJSON FeatureCollection with each `amenity=parking_space` feature and its tags.
 
@@ -86,5 +86,5 @@ flags allow fine-grain tuning for different imagery.
   python scripts/fetch_osu_parking_data.py \
     --south 40.0000 --west -83.0325 --north 40.0180 --east -83.0085
   ```
-  It saves `data/osm/parking_lots_osu.geojson` and `data/osm/parking_spaces_osu.geojson`,
+  It saves `data/osm/osu_campus_parking_lots.geojson` and `data/osm/osu_campus_parking_spaces.geojson`,
   which the frontend overlays when you zoom in on any OSU lot.

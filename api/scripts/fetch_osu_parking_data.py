@@ -89,8 +89,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--north", type=float, default=40.0180)
     parser.add_argument("--east", type=float, default=-83.0085)
     parser.add_argument("--dir", type=Path, default=Path("data/osm"))
-    parser.add_argument("--lots", type=str, default="parking_lots_osu.geojson")
-    parser.add_argument("--spaces", type=str, default="parking_spaces_osu.geojson")
+    parser.add_argument("--lots", type=str, default="osu_campus_parking_lots.geojson")
+    parser.add_argument("--spaces", type=str, default="osu_campus_parking_spaces.geojson")
     return parser.parse_args()
 
 

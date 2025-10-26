@@ -19,17 +19,17 @@ export default function ForecastCard({ lotId, className }: Props) {
 
   const wrapperClass =
     className ||
-    'rounded-3xl border border-neutral-200 bg-white shadow-sm p-5 sm:p-6 text-sm text-slate-700 space-y-2';
+    'rounded-3xl border border-neutral-200 bg-white shadow-sm p-5 sm:p-6 text-sm text-osu-gray space-y-2';
 
   if (!d) return <div className={wrapperClass}>Loading forecast…</div>;
 
   return (
     <div className={wrapperClass}>
-      <div className="text-sm font-semibold text-slate-900">Forecast (this slot)</div>
+      <div className="text-sm font-semibold text-osu-scarlet">Forecast (this slot)</div>
       <div>
         Expected open: <span className="font-semibold text-emerald-600">{d.open_expected ?? '—'}</span>
       </div>
-      <div className="text-xs text-slate-500">
+      <div className="text-xs text-gray-500">
         IQR: {d.open_p25 ?? '—'} – {d.open_p75 ?? '—'}
       </div>
     </div>

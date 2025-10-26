@@ -4,13 +4,6 @@ import { useEffect, useMemo } from 'react'
 import type { LotSummary } from '../lib/types'
 import { useApp } from '../state/store'
 
-const ALLOWED_OSM_IDS = new Set([
-  'way/39115920',
-  'way/38911611',
-  'way/444966505',
-  'way/275147287',
-])
-
 function geometryContainsPoint(geometry: any, point: [number, number]) {
   if (!geometry) return false
   const ringContains = (ring: [number, number][]) => {
@@ -71,7 +64,7 @@ export default function LotDetailMap({ lot }: { lot: LotSummary }) {
   const { data: spaces } = useQuery({
     queryKey: ['parking-spaces-osu'],
     queryFn: async () => {
-      const res = await fetch(`${base}/osm/parking_spaces_osu.geojson`)
+      const res = await fetch(`${base}/osm/osu_campus_parking_spaces.geojson`)
       if (!res.ok) throw new Error('Failed to load parking spaces')
       return res.json()
     },
@@ -79,7 +72,7 @@ export default function LotDetailMap({ lot }: { lot: LotSummary }) {
   const { data: lotsGeo } = useQuery({
     queryKey: ['parking-lots-osu'],
     queryFn: async () => {
-      const res = await fetch(`${base}/osm/parking_lots_osu.geojson`)
+      const res = await fetch(`${base}/osm/osu_campus_parking_lots.geojson`)
       if (!res.ok) throw new Error('Failed to load parking lots')
       return res.json()
     },
@@ -102,7 +95,7 @@ export default function LotDetailMap({ lot }: { lot: LotSummary }) {
   const lotFeature = useMemo(() => {
     if (!lotsGeo?.features) return null
     const osmId = lot.metadata?.osmId
-    if (!osmId || !ALLOWED_OSM_IDS.has(osmId)) return null
+    if (!osmId) return null
     return lotsGeo.features.find((ft: any) => ft.properties?.id === osmId) || null
   }, [lotsGeo, lot])
 

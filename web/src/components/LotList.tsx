@@ -23,7 +23,21 @@ const formatWalk = (meters?: number) => {
 const availabilityColor = (ratio: number) => {
   if (ratio >= 0.5) return 'bg-emerald-500'
   if (ratio >= 0.2) return 'bg-amber-500'
-  return 'bg-rose-500'
+  return 'bg-red-700'
+}
+
+const summarizePricing = (pricing: unknown): string | null => {
+  if (!pricing) return null
+  if (typeof pricing === 'string') return pricing
+  if (typeof pricing === 'object') {
+    const record = pricing as Record<string, any>
+    if (record.daily_max != null) return `Daily max $${Number(record.daily_max).toFixed(2)}`
+    if (record.hourly != null) return `Hourly $${Number(record.hourly).toFixed(2)}`
+    if (record.notes) return String(record.notes)
+    const keys = Object.keys(record)
+    if (keys.length) return `${keys.length} pricing tiers`
+  }
+  return null
 }
 
 export default function LotList({ searchQuery = '' }: { searchQuery?: string }) {
@@ -47,19 +61,22 @@ export default function LotList({ searchQuery = '' }: { searchQuery?: string }) 
       const code = lot.code || ''
       const tags = lot.metadata?.tags || {}
       const haystack = [lot.name, code, tags.operator, tags.parking]?.join(' ').toLowerCase()
+      if (filters.permit && lot.permit_types?.length) {
+        if (!lot.permit_types.includes(filters.permit)) return false
+      }
       return haystack.includes(q)
     })
-  }, [data, searchQuery])
+  }, [data, searchQuery, filters.permit])
 
   return (
-    <div className='flex-1 flex flex-col overflow-hidden'>
+    <div className='flex-1 flex flex-col overflow-hidden max-h-[70vh] lg:max-h-[calc(100vh-200px)]'>
       <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-4 sm:px-5 py-3 border-b border-neutral-200 bg-white/80 backdrop-blur'>
         <div className='space-y-1'>
-          <h2 className='text-sm font-semibold text-slate-900'>Nearby lots</h2>
-          <p className='text-xs text-slate-500'>{filtered.length} results • Sorted by distance</p>
+          <h2 className='text-sm font-semibold text-osu-scarlet'>Nearby lots</h2>
+          <p className='text-xs text-osu-gray'>{filtered.length} results • Sorted by distance</p>
         </div>
       </div>
-      <div className='flex-1 overflow-auto px-3 sm:px-4 py-4 space-y-4'>
+      <div className='flex-1 overflow-y-auto overflow-x-hidden px-3 sm:px-4 py-4 space-y-4 custom-scrollbar'>
         {filtered.map((lot: any) => {
           const isSelected = lot.id === selectedLotId
           const open = lot.counts?.open ?? 0
@@ -72,25 +89,25 @@ export default function LotList({ searchQuery = '' }: { searchQuery?: string }) 
             <div
               key={lot.id}
               className={`rounded-2xl border shadow-sm p-4 transition-colors cursor-pointer bg-white ${
-                isSelected ? 'border-rose-300 ring-1 ring-rose-200' : 'border-neutral-200 hover:border-rose-200'
+                isSelected ? 'border-osu-scarlet shadow-md' : 'border-neutral-200 hover:border-red-700'
               }`}
               onClick={() => setSelectedLotId(lot.id)}
             >
               <div className='flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between'>
                 <div className='space-y-2'>
-                  <div className='text-base font-semibold text-slate-900 leading-tight'>{lot.name}</div>
+                  <div className='text-base font-semibold text-osu-gray leading-tight'>{lot.name}</div>
                   <div className='flex flex-wrap gap-2 text-xs text-slate-500'>
                     {lot.code && <span className='px-2 py-0.5 rounded-full bg-neutral-100 text-slate-600 font-medium'>{lot.code}</span>}
                     {distance && <span className='px-2 py-0.5 rounded-full bg-neutral-100'>{distance}</span>}
                     {walk && <span className='px-2 py-0.5 rounded-full bg-neutral-100'>{walk}</span>}
                     {lot.permit_types?.map((permit: string) => (
-                      <span key={permit} className='px-2 py-0.5 rounded-full bg-rose-50 text-rose-600 font-medium'>
+                      <span key={permit} className='px-2 py-0.5 rounded-full bg-osu-light text-osu-scarlet font-medium'>
                         Permit {permit}
                       </span>
                     ))}
                   </div>
                 </div>
-                <div className='text-sm font-semibold text-slate-900 sm:text-right'>
+                <div className='text-sm font-semibold text-osu-gray sm:text-right'>
                   {open} open / {total}
                 </div>
               </div>
@@ -102,11 +119,16 @@ export default function LotList({ searchQuery = '' }: { searchQuery?: string }) 
                   />
                 </div>
               </div>
-              <div className='mt-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-xs text-slate-500'>
-                <div className='order-2 sm:order-1'>Updated moments ago</div>
+              {summarizePricing(lot.pricing) && (
+                <div className='mt-3 text-xs text-osu-gray/90'>
+                  {summarizePricing(lot.pricing)}
+                </div>
+              )}
+              <div className='mt-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-xs text-osu-gray'>
+                <div className='order-2 sm:order-1 text-gray-500'>Updated moments ago</div>
                 <button
                   type='button'
-                  className='order-1 sm:order-2 text-rose-600 hover:text-rose-700 font-medium self-start sm:self-auto'
+                  className='order-1 sm:order-2 text-osu-scarlet hover:underline font-medium self-start sm:self-auto'
                   onClick={(evt) => {
                     evt.stopPropagation()
                     setSelectedLotId(lot.id)

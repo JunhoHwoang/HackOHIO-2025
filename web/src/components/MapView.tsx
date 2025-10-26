@@ -15,13 +15,6 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow,
 })
 
-const ALLOWED_OSM_IDS = new Set([
-  'way/39115920',
-  'way/38911611',
-  'way/444966505',
-  'way/275147287',
-])
-
 const EARTH_RADIUS = 6378137
 
 function FitToUser() {
@@ -134,7 +127,7 @@ function computeCentroidLonLat(geometry: any): [number, number] | null {
   return [center[1], center[0]]
 }
 
-function ParkingSpacesOverlay({ data }: { data: any }) {
+function ParkingSpacesOverlay({ data, selectedLotId }: { data: any; selectedLotId?: string }) {
   const [subset, setSubset] = useState<any>(null)
   const map = useMap()
 
@@ -180,6 +173,19 @@ function ParkingSpacesOverlay({ data }: { data: any }) {
     }
   }, [map, data])
 
+  useEffect(() => {
+    if (!data) return
+    const zoom = map.getZoom()
+    if (zoom < 17) return
+    const bounds = map.getBounds()
+    const filtered = data.features.filter((feature: any) =>
+      geometryIntersectsBounds(feature.geometry, bounds)
+    )
+    if (filtered.length) {
+      setSubset({ ...data, features: filtered })
+    }
+  }, [selectedLotId, data, map])
+
   if (!subset) return null
   return (
     <GeoJSON
@@ -204,7 +210,7 @@ export default function MapView({ searchQuery = '' }: { searchQuery?: string }) 
   const { data: spacesRaw } = useQuery({
     queryKey: ['parking-spaces-osu'],
     queryFn: async () => {
-      const res = await fetch(`${base}/osm/parking_spaces_osu.geojson`)
+      const res = await fetch(`${base}/osm/osu_campus_parking_spaces.geojson`)
       if (!res.ok) throw new Error('Failed to load parking spaces')
       return res.json()
     },
@@ -213,7 +219,7 @@ export default function MapView({ searchQuery = '' }: { searchQuery?: string }) 
   const { data: lotsGeo } = useQuery({
     queryKey: ['parking-lots-osu'],
     queryFn: async () => {
-      const res = await fetch(`${base}/osm/parking_lots_osu.geojson`)
+      const res = await fetch(`${base}/osm/osu_campus_parking_lots.geojson`)
       if (!res.ok) throw new Error('Failed to load parking lots')
       return res.json()
     },
@@ -255,11 +261,12 @@ export default function MapView({ searchQuery = '' }: { searchQuery?: string }) 
     const q = searchQuery.trim().toLowerCase()
     return lotsGeo.features.filter((feature: any) => {
       const id = feature.properties?.id
-      if (!ALLOWED_OSM_IDS.has(id)) return false
-      if (!q) return true
+      if (!lotSummariesByOsmId.has(id)) return false
       const summary = lotSummariesByOsmId.get(id)
       if (!summary) return false
-      if (filters.permit && !summary.permit_types?.includes(filters.permit)) return false
+      if (filters.permit && summary.permit_types?.length) {
+        if (!summary.permit_types.includes(filters.permit)) return false
+      }
       const haystack = [summary.name, summary.code, summary.metadata?.tags?.operator]
         .join(' ')
         .toLowerCase()
@@ -294,7 +301,7 @@ export default function MapView({ searchQuery = '' }: { searchQuery?: string }) 
   }, [spacesRaw, allowedLots, occupiedSet])
 
   const markers = useMemo(() => {
-    return allowedLots
+    const baseMarkers = allowedLots
       .map((feature: any) => {
         const osmId = feature.properties?.id
         const summary = lotSummariesByOsmId.get(osmId)
@@ -313,7 +320,24 @@ export default function MapView({ searchQuery = '' }: { searchQuery?: string }) 
         }
       })
       .filter(Boolean) as Array<{ id: string; osmId: string; name: string; centroid: [number, number]; feature: any; counts: any }>
-  }, [allowedLots, lotSummariesByOsmId])
+
+    if (!lotSummaries) return baseMarkers
+
+    const matchedIds = new Set(baseMarkers.map((m) => m.id))
+    const extras = lotSummaries
+      .filter((summary: any) => summary.centroid && !matchedIds.has(summary.id))
+      .map((summary: any) => ({
+        id: summary.id,
+        osmId: summary.metadata?.osmId || null,
+        name: summary.name,
+        centroid: [summary.centroid.lat, summary.centroid.lng] as [number, number],
+        feature: { properties: { tags: { name: summary.name } } },
+        counts: summary.counts,
+        area: null,
+      }))
+
+    return [...baseMarkers, ...extras]
+  }, [allowedLots, lotSummaries, lotSummariesByOsmId])
 
   return (
     <MapContainer
@@ -331,7 +355,7 @@ export default function MapView({ searchQuery = '' }: { searchQuery?: string }) 
         maxZoom={19}
       />
       <FitToUser />
-      {filteredSpaces && <ParkingSpacesOverlay data={filteredSpaces} />}
+      {filteredSpaces && <ParkingSpacesOverlay data={filteredSpaces} selectedLotId={selectedLotId} />}
       {markers.map(({ id, centroid, feature, counts }) => {
         const [lat, lng] = centroid
         return (
@@ -353,20 +377,50 @@ export default function MapView({ searchQuery = '' }: { searchQuery?: string }) 
           </Marker>
         )
       })}
-      <SelectedLotFollower markers={markers} selectedLotId={selectedLotId} />
+      {markers.map(({ id, centroid, counts }) => (
+        <Marker
+          key={`${id}-label`}
+          position={[centroid[0], centroid[1]]}
+          interactive={false}
+          icon={L.divIcon({
+            className: 'open-count-marker',
+            html: `<span class="open-count-chip">${counts?.open ?? 0} open</span>`,
+            iconAnchor: [40, 20],
+          })}
+        />
+      ))}
+      <SelectedLotFollower markers={markers} selectedLotId={selectedLotId} summaries={lotSummaries} />
     </MapContainer>
   )
 }
 
-function SelectedLotFollower({ markers, selectedLotId }: { markers: any[]; selectedLotId?: string }) {
+function SelectedLotFollower({ markers, selectedLotId, summaries }: { markers: any[]; selectedLotId?: string; summaries?: any[] }) {
   const map = useMap()
   useEffect(() => {
     if (!selectedLotId) return
     const marker = markers.find((m) => m.id === selectedLotId)
     if (marker) {
       map.flyTo([marker.centroid[0], marker.centroid[1]], 18, { duration: 0.8 })
+      return
+    }
+    const summary = summaries?.find((lot) => lot.id === selectedLotId)
+    const centroid = summary?.centroid
+    if (centroid) {
+      map.flyTo([centroid.lat, centroid.lng], Math.max(map.getZoom(), 17), { duration: 0.8 })
     }
   }, [selectedLotId, markers, map])
+
+  useEffect(() => {
+    if (!selectedLotId) return
+    const target = markers.find((m) => m.id === selectedLotId)
+    const summary = summaries?.find((lot) => lot.id === selectedLotId)
+    const hasTarget = target || summary?.centroid
+    if (!hasTarget) return
+    const currentZoom = map.getZoom()
+    if (currentZoom < 17) {
+      map.setZoom(17)
+    }
+  }, [selectedLotId, markers, summaries, map])
   return null
 }
 
