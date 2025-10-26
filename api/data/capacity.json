@@ -41,6 +41,30 @@
       "occupied": 147,
       "source": "mock",
       "observed_at": "2025-10-26T04:00:00.031Z"
+    },
+    {
+      "capacity": 441,
+      "occupied": 145,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:20:00.008Z"
+    },
+    {
+      "capacity": 441,
+      "occupied": 147,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:30:00.033Z"
+    },
+    {
+      "capacity": 441,
+      "occupied": 148,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:40:00.012Z"
+    },
+    {
+      "capacity": 441,
+      "occupied": 148,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:50:00.009Z"
     }
   ],
   "lot-way-39115920": [
@@ -85,6 +109,30 @@
       "occupied": 0,
       "source": "mock",
       "observed_at": "2025-10-26T04:00:00.031Z"
+    },
+    {
+      "capacity": 38,
+      "occupied": 0,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:20:00.008Z"
+    },
+    {
+      "capacity": 38,
+      "occupied": 0,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:30:00.033Z"
+    },
+    {
+      "capacity": 38,
+      "occupied": 2,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:40:00.012Z"
+    },
+    {
+      "capacity": 38,
+      "occupied": 4,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:50:00.009Z"
     }
   ],
   "lot-way-275147287": [
@@ -129,6 +177,30 @@
       "occupied": 0,
       "source": "mock",
       "observed_at": "2025-10-26T04:00:00.031Z"
+    },
+    {
+      "capacity": 51,
+      "occupied": 0,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:20:00.008Z"
+    },
+    {
+      "capacity": 51,
+      "occupied": 0,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:30:00.033Z"
+    },
+    {
+      "capacity": 51,
+      "occupied": 3,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:40:00.012Z"
+    },
+    {
+      "capacity": 51,
+      "occupied": 1,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:50:00.009Z"
     }
   ],
   "lot-way-444966505": [
@@ -173,6 +245,30 @@
       "occupied": 2,
       "source": "mock",
       "observed_at": "2025-10-26T04:00:00.031Z"
+    },
+    {
+      "capacity": 435,
+      "occupied": 0,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:20:00.008Z"
+    },
+    {
+      "capacity": 435,
+      "occupied": 2,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:30:00.033Z"
+    },
+    {
+      "capacity": 435,
+      "occupied": 1,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:40:00.012Z"
+    },
+    {
+      "capacity": 435,
+      "occupied": 0,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:50:00.009Z"
     }
   ]
 }

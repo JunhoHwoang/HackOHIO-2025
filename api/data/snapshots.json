@@ -41,6 +41,34 @@
       "open": 0,
       "occupied": 0,
       "detected_at": "2025-10-26T04:00:00.032Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:20",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:20:00.009Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:30",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:30:00.034Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:40",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:40:00.013Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:50",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:50:00.011Z"
     }
   ],
   "lot-way-39115920": [
@@ -85,6 +113,34 @@
       "open": 0,
       "occupied": 0,
       "detected_at": "2025-10-26T04:00:00.032Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:20",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:20:00.009Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:30",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:30:00.034Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:40",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:40:00.013Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:50",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:50:00.011Z"
     }
   ],
   "lot-way-275147287": [
@@ -129,6 +185,34 @@
       "open": 0,
       "occupied": 0,
       "detected_at": "2025-10-26T04:00:00.032Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:20",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:20:00.009Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:30",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:30:00.034Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:40",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:40:00.013Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:50",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:50:00.011Z"
     }
   ],
   "lot-way-444966505": [
@@ -173,6 +257,34 @@
       "open": 0,
       "occupied": 0,
       "detected_at": "2025-10-26T04:00:00.032Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:20",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:20:00.009Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:30",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:30:00.034Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:40",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:40:00.013Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:50",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:50:00.011Z"
     }
   ]
 }
