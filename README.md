@@ -1,4 +1,8 @@
-# OSU Smart Parking — Hackathon Prototype
+# 🅿️ OSU Smart Parking — Hackathon Prototype
+
+A full-stack prototype for real-time smart parking at The Ohio State University, built during the HackOHIO 2025 hackathon.
+This project combines a computer vision backend that detects occupied stalls with a React + Leaflet web app for live visualization.
+---
 
 Two-part app:
 - `api/`: Node/Express mock API (ESM). Seeds mock OSU lots & a demo image.
@@ -7,6 +11,7 @@ Two-part app:
 ## Requirements
 - Node 18+
 - npm (or pnpm/yarn)
+- Python 3.8+
 
 ## 1) API
 ```bash
@@ -22,12 +27,39 @@ cd web
 npm i
 npm run dev        # http://localhost:5173
 ```
-
 The web uses `VITE_API_BASE` if set:
 ```bash
 # Example: point web to a deployed API
 VITE_API_BASE="https://your-api.example.com" npm run dev
 ```
+
+## 3) Backend (Computer Vision + Web Scraping)
+
+### Model Training
+
+1. **Download dataset**  
+   Get the [Parking Space Detection Dataset](https://www.kaggle.com/datasets/trainingdatapro/parking-space-detection-dataset).
+
+2. **Place the dataset**  
+   Move the downloaded folder into: Backend/CV
+   
+3. **Install dependencies**
+```bash
+pip install -r requirements.txt
+```
+
+4. **Extract XML slot labels**
+```python extract_slots_xml.py```
+
+5. **Train the model**
+```python main.py```
+Once the training is complete, the best model weight will be stored in /model.
+
+### Backend Logic
+Now that the model is ready, you can run the backend logic from Backend/scheduler
+```python scheduler.py```
+
+This file updates the parking spots and the parking lots' status in the database
 
 ## Features
 - Discover map (Leaflet) + nearby list; filter by permit (A/B/C/Visitor)
