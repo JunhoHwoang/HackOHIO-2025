@@ -19,7 +19,10 @@ html,body,#root{height:100%}
 .custom-scrollbar::-webkit-scrollbar{width:6px;}
 .custom-scrollbar::-webkit-scrollbar-track{background:transparent;border-radius:9999px;}
 .custom-scrollbar::-webkit-scrollbar-thumb{background-color:var(--osu-scarlet);border-radius:9999px;}
-.open-count-marker{pointer-events:none;}
+.open-count-marker{
+  pointer-events:none;
+  transform:translate(-50%, -120%);
+}
 .open-count-chip{
   display:inline-flex;
   align-items:center;
@@ -33,7 +36,15 @@ html,body,#root{height:100%}
   box-shadow:0 1px 3px rgba(0,0,0,0.15);
   white-space:nowrap;
 }
+<<<<<<< HEAD
 img.leaflet-marker-icon,
 .leaflet-marker-shadow {
   display: none !important;
 }
+=======
+
+mg.leaflet-marker-icon,
+.leaflet-marker-shadow {
+  display: none !important;
+}
+>>>>>>> 94505a6 (green dot, collect data from database)

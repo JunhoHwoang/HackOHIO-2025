@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { getLot } from '../lib/api'
 import type { LotSummary } from '../lib/types'
 import ForecastCard from '../components/ForecastCard'
@@ -8,10 +8,29 @@ import LotDetailMap from '../components/LotDetailMap'
 export default function LotDetail() {
   const { id = '' } = useParams()
   const [lot, setLot] = useState<LotSummary | null>(null)
+  const [observedCounts, setObservedCounts] = useState<{
+    counts: LotSummary['counts']
+    observedAt: string
+  } | null>(null)
 
   useEffect(() => {
     getLot(id).then(setLot)
   }, [id])
+
+  useEffect(() => {
+    setObservedCounts(null)
+  }, [lot?.id])
+
+  const handleCountsChange = useCallback((counts: LotSummary['counts'] | null, observedAt?: string) => {
+    if (!counts) {
+      setObservedCounts(null)
+      return
+    }
+    setObservedCounts({
+      counts,
+      observedAt: observedAt ?? new Date().toISOString(),
+    })
+  }, [])
 
   if (!lot) {
     return (
@@ -21,8 +40,16 @@ export default function LotDetail() {
     )
   }
 
-  const counts = lot.counts
+  const counts = observedCounts?.counts || lot.counts
   const pricing = lot.pricing
+  const liveCap = observedCounts
+    ? {
+        capacity: observedCounts.counts.total,
+        occupied: observedCounts.counts.occupied,
+        source: 'vision',
+        observed_at: observedCounts.observedAt,
+      }
+    : lot.latestCap
 
   const renderPricing = () => {
     if (!pricing) return null
@@ -94,7 +121,7 @@ export default function LotDetail() {
       <div className='grid grid-cols-1 gap-6 xl:gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]'>
         <section className='rounded-3xl border border-neutral-200 bg-white shadow-sm overflow-hidden'>
           <div className='h-[320px] sm:h-[400px] lg:h-[480px]'>
-            <LotDetailMap lot={lot} />
+            <LotDetailMap lot={lot} onCountsChange={handleCountsChange} />
           </div>
         </section>
 
@@ -109,15 +136,15 @@ export default function LotDetail() {
               Permits accepted: <span className='font-medium text-osu-scarlet'>{lot.permit_types.join(', ') || '—'}</span>
             </div>
             {renderPricing()}
-            {lot.latestCap && (
+            {liveCap && (
               <div className='rounded-2xl border border-osu-scarlet bg-osu-light px-4 py-3 text-sm text-osu-gray'>
                 <div className='font-medium text-osu-scarlet'>Capacity snapshot</div>
                 <div className='mt-1'>
-                  {lot.latestCap.occupied}/{lot.latestCap.capacity} occupied (
-                  {Math.round((100 * lot.latestCap.occupied) / lot.latestCap.capacity)}% full)
+                  {liveCap.occupied}/{liveCap.capacity} occupied (
+                  {liveCap.capacity ? Math.round((100 * liveCap.occupied) / liveCap.capacity) : 0}% full)
                 </div>
                 <div className='text-xs text-gray-500 mt-2'>
-                  Observed {new Date(lot.latestCap.observed_at).toLocaleString()}
+                  Observed {new Date(liveCap.observed_at).toLocaleString()} • Source: {liveCap.source}
                 </div>
               </div>
             )}

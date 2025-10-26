@@ -1,19 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
-import { MapContainer, TileLayer, Marker, Popup, GeoJSON, useMap } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, GeoJSON, useMap, CircleMarker } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { useQuery } from '@tanstack/react-query'
 import L from 'leaflet'
-import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png'
-import markerIcon from 'leaflet/dist/images/marker-icon.png'
-import markerShadow from 'leaflet/dist/images/marker-shadow.png'
 import { useApp } from '../state/store'
 import { getLots } from '../lib/api'
-
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: markerIcon2x,
-  iconUrl: markerIcon,
-  shadowUrl: markerShadow,
-})
 
 const EARTH_RADIUS = 6378137
 
@@ -206,6 +197,8 @@ export default function MapView({ searchQuery = '' }: { searchQuery?: string }) 
   const selectedLotId = useApp((s) => s.selectedLotId)
   const setSelectedLotId = useApp((s) => s.setSelectedLotId)
   const filters = useApp((s) => s.filters)
+  const setLotSnapshots = useApp((s) => s.setLotSnapshots)
+  const lotSnapshots = useApp((s) => s.lotSnapshots)
 
   const { data: spacesRaw } = useQuery({
     queryKey: ['parking-spaces-osu'],
@@ -233,11 +226,23 @@ export default function MapView({ searchQuery = '' }: { searchQuery?: string }) 
   const { data: occupancy } = useQuery({
     queryKey: ['lot-occupancy'],
     queryFn: async () => {
-      const res = await fetch(`${base}/data/output1.json`)
+      const res = await fetch(`${base}/api/occupancy`)
       if (!res.ok) throw new Error('Failed to load occupancy')
       return res.json()
     },
   })
+  const occupancyFetchedAt = typeof occupancy?.fetchedAt === 'string' ? occupancy.fetchedAt : null
+
+  const spacesWithCenter = useMemo(() => {
+    if (!spacesRaw?.features) return []
+    return spacesRaw.features
+      .map((feature: any) => {
+        const center = computeCentroidLonLat(feature.geometry)
+        if (!center) return null
+        return { feature, center }
+      })
+      .filter(Boolean) as Array<{ feature: any; center: [number, number] }>
+  }, [spacesRaw])
 
   const occupiedSet = useMemo(() => {
     const slots = occupancy?.slots
@@ -255,6 +260,25 @@ export default function MapView({ searchQuery = '' }: { searchQuery?: string }) 
     }
     return map
   }, [lotSummaries])
+
+  const knownOsmIds = useMemo(() => {
+    const set = new Set<string>()
+    if (lotSummaries) {
+      for (const lot of lotSummaries) {
+        const osmId = lot.metadata?.osmId
+        if (osmId) set.add(osmId)
+      }
+    }
+    return set
+  }, [lotSummaries])
+
+  const lotFeaturesForCounts = useMemo(() => {
+    if (!lotsGeo?.features || !knownOsmIds.size) return []
+    return lotsGeo.features.filter((feature: any) => {
+      const osmId = feature?.properties?.id
+      return osmId && knownOsmIds.has(osmId)
+    })
+  }, [lotsGeo, knownOsmIds])
 
   const allowedLots = useMemo(() => {
     if (!lotsGeo?.features) return []
@@ -300,6 +324,59 @@ export default function MapView({ searchQuery = '' }: { searchQuery?: string }) 
     return { ...spacesRaw, features }
   }, [spacesRaw, allowedLots, occupiedSet])
 
+  const occupancyByLot = useMemo(() => {
+    if (!spacesWithCenter.length || !lotFeaturesForCounts.length) return new Map<string, { total: number; occupied: number; open: number; unknown: number }>()
+    const statsByOsm = new Map<string, { total: number; occupied: number }>()
+    for (const { feature, center } of spacesWithCenter) {
+      const spaceId = feature?.properties?.id
+      if (!center) continue
+      for (const lot of lotFeaturesForCounts) {
+        const osmId = lot?.properties?.id
+        if (!osmId || !lot.geometry) continue
+        if (geometryContainsPoint(lot.geometry, center)) {
+          const stats = statsByOsm.get(osmId) || { total: 0, occupied: 0 }
+          stats.total += 1
+          if (spaceId && occupiedSet.has(spaceId)) {
+            stats.occupied += 1
+          }
+          statsByOsm.set(osmId, stats)
+          break
+        }
+      }
+    }
+    const result = new Map<string, { total: number; occupied: number; open: number; unknown: number }>()
+    for (const [osmId, stats] of statsByOsm.entries()) {
+      const open = Math.max(stats.total - stats.occupied, 0)
+      result.set(osmId, { total: stats.total, occupied: stats.occupied, open, unknown: 0 })
+    }
+    return result
+  }, [spacesWithCenter, lotFeaturesForCounts, occupiedSet])
+
+  useEffect(() => {
+    if (!occupancyByLot.size) return
+    const observedAt = occupancyFetchedAt || new Date().toISOString()
+    const snapshots: Record<string, { counts: { total: number; occupied: number; open: number; unknown: number }; observedAt: string }> = {}
+    for (const [osmId, counts] of occupancyByLot.entries()) {
+      const summary = lotSummariesByOsmId.get(osmId)
+      if (!summary) continue
+      const existing = lotSnapshots[summary.id]
+      if (
+        existing &&
+        existing.observedAt === observedAt &&
+        existing.counts.total === counts.total &&
+        existing.counts.occupied === counts.occupied &&
+        existing.counts.open === counts.open &&
+        existing.counts.unknown === counts.unknown
+      ) {
+        continue
+      }
+      snapshots[summary.id] = { counts, observedAt }
+    }
+    if (Object.keys(snapshots).length) {
+      setLotSnapshots(snapshots)
+    }
+  }, [occupancyByLot, lotSummariesByOsmId, occupancyFetchedAt, setLotSnapshots, lotSnapshots])
+
   const markers = useMemo(() => {
     const baseMarkers = allowedLots
       .map((feature: any) => {
@@ -309,13 +386,14 @@ export default function MapView({ searchQuery = '' }: { searchQuery?: string }) 
         const centroid = centroidForGeometry(feature.geometry)
         if (!centroid) return null
         const area = geometryArea(feature.geometry)
+        const snapshot = summary ? lotSnapshots[summary.id] : undefined
         return {
           id: summary.id,
           osmId,
           name: summary.name,
           centroid,
           feature,
-          counts: summary.counts,
+          counts: snapshot?.counts || summary.counts,
           area,
         }
       })
@@ -332,12 +410,12 @@ export default function MapView({ searchQuery = '' }: { searchQuery?: string }) 
         name: summary.name,
         centroid: [summary.centroid.lat, summary.centroid.lng] as [number, number],
         feature: { properties: { tags: { name: summary.name } } },
-        counts: summary.counts,
+        counts: lotSnapshots[summary.id]?.counts || summary.counts,
         area: null,
       }))
 
     return [...baseMarkers, ...extras]
-  }, [allowedLots, lotSummaries, lotSummariesByOsmId])
+  }, [allowedLots, lotSummaries, lotSummariesByOsmId, lotSnapshots])
 
   return (
     <MapContainer
@@ -358,10 +436,20 @@ export default function MapView({ searchQuery = '' }: { searchQuery?: string }) 
       {filteredSpaces && <ParkingSpacesOverlay data={filteredSpaces} selectedLotId={selectedLotId} />}
       {markers.map(({ id, centroid, feature, counts }) => {
         const [lat, lng] = centroid
+        const openSpaces = counts?.open ?? 0
+        const totalSpaces = counts?.total ?? 0
+        const hasAvailability = openSpaces > 0
         return (
-          <Marker
+          <CircleMarker
             key={id}
-            position={[lat, lng]}
+            center={[lat, lng]}
+            radius={9}
+            pathOptions={{
+              color: hasAvailability ? '#15803d' : '#b91c1c',
+              fillColor: hasAvailability ? '#22c55e' : '#fca5a5',
+              fillOpacity: 0.9,
+              weight: 2,
+            }}
             eventHandlers={{
               click: () => setSelectedLotId(id),
             }}
@@ -370,11 +458,11 @@ export default function MapView({ searchQuery = '' }: { searchQuery?: string }) 
               <div className='text-sm'>
                 <div className='font-medium'>{feature.properties?.tags?.name || 'Parking Lot'}</div>
                 <div className='text-xs text-gray-500'>
-                  {counts?.open ?? 0} open / {counts?.total ?? 0}
+                  {openSpaces} open / {totalSpaces}
                 </div>
               </div>
             </Popup>
-          </Marker>
+          </CircleMarker>
         )
       })}
       {markers.map(({ id, centroid, counts }) => (
@@ -385,7 +473,7 @@ export default function MapView({ searchQuery = '' }: { searchQuery?: string }) 
           icon={L.divIcon({
             className: 'open-count-marker',
             html: `<span class="open-count-chip">${counts?.open ?? 0} open</span>`,
-            iconAnchor: [40, 20],
+            iconAnchor: [0, 0],
           })}
         />
       ))}

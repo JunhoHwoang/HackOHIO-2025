@@ -52,7 +52,15 @@ function computeCentroidLonLat(geometry: any): [number, number] | null {
   }
 }
 
-export default function LotDetailMap({ lot }: { lot: LotSummary }) {
+type ObservedCounts = LotSummary['counts']
+
+export default function LotDetailMap({
+  lot,
+  onCountsChange,
+}: {
+  lot: LotSummary
+  onCountsChange?: (counts: ObservedCounts | null, observedAt?: string) => void
+}) {
   const base = import.meta.env.VITE_API_BASE || 'http://localhost:4000'
   const setSelectedLotId = useApp((s) => s.setSelectedLotId)
 
@@ -80,11 +88,12 @@ export default function LotDetailMap({ lot }: { lot: LotSummary }) {
   const { data: occupancy } = useQuery({
     queryKey: ['lot-occupancy'],
     queryFn: async () => {
-      const res = await fetch(`${base}/data/output1.json`)
+      const res = await fetch(`${base}/api/occupancy`)
       if (!res.ok) throw new Error('Failed to load occupancy')
       return res.json()
     },
   })
+  const occupancyObservedAt = typeof occupancy?.fetchedAt === 'string' ? occupancy.fetchedAt : null
 
   const occupiedSet = useMemo(() => {
     const slots = occupancy?.slots
@@ -123,6 +132,30 @@ export default function LotDetailMap({ lot }: { lot: LotSummary }) {
       })
     return { ...spaces, features }
   }, [spaces, lotFeature, occupiedSet])
+
+  useEffect(() => {
+    if (!onCountsChange) return
+    if (!lotSpaces?.features?.length) {
+      onCountsChange(null, occupancyObservedAt ?? new Date().toISOString())
+      return
+    }
+    const total = lotSpaces.features.length
+    let occupied = 0
+    for (const feature of lotSpaces.features) {
+      const id = feature.properties?.id
+      if (occupiedSet.has(id)) occupied += 1
+    }
+    const open = Math.max(total - occupied, 0)
+    onCountsChange(
+      {
+        total,
+        occupied,
+        open,
+        unknown: 0,
+      },
+      occupancyObservedAt ?? new Date().toISOString()
+    )
+  }, [lotSpaces, occupiedSet, onCountsChange, occupancyObservedAt])
 
   const center = useMemo<[number, number]>(() => {
     if (lot.centroid) return [lot.centroid.lat, lot.centroid.lng]

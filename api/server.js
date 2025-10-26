@@ -85,7 +85,7 @@ async function fetchSupabaseData() {
   try {
     const [lotsRes, spotsRes, accessRes, permitRes] = await Promise.all([
       supabase.from(SUPABASE_TABLE).select("lot_name,capacity,occupancy,location,pricing"),
-      supabase.from("parking_spot").select("lot_name,is_filled"),
+      supabase.from("parking_spot").select("spot_id,lot_name,is_filled"),
       supabase.from("permit_access").select("lot_name,permit_id"),
       supabase.from("permit_type").select("permit_id,code,name"),
     ]);
@@ -170,6 +170,41 @@ app.get("/", (_req, res) => res.json({ ok: true, service: "smart-parking-api" })
 app.use("/images", express.static(IMG_DIR));
 app.use("/osm", express.static(path.join(DATA_DIR, "osm")));
 app.use("/data", express.static(DATA_DIR));
+
+app.get("/api/occupancy", async (_req, res) => {
+  try {
+    const supaSnapshot = await fetchSupabaseData();
+    if (supaSnapshot && supaSnapshot.spotsByLotName?.size) {
+      const slots = [];
+      for (const [lotName, spots] of supaSnapshot.spotsByLotName.entries()) {
+        for (const spot of spots) {
+          if (spot?.spot_id == null) continue;
+          slots.push({
+            id: Number(spot.spot_id),
+            occupied: Boolean(spot.is_filled),
+            lot: lotName,
+          });
+        }
+      }
+      return res.json({
+        source: "supabase",
+        fetchedAt: new Date().toISOString(),
+        slots,
+      });
+    }
+
+    const fallback = readJSON("output1.json", null) || readJSON("output2.json", null);
+    const slots = Array.isArray(fallback?.slots) ? fallback.slots : [];
+    return res.json({
+      source: fallback?.source || "file",
+      fetchedAt: fallback?.fetchedAt || new Date().toISOString(),
+      slots,
+    });
+  } catch (err) {
+    console.error("Failed to load occupancy snapshot", err);
+    res.status(500).json({ error: "Failed to load occupancy snapshot" });
+  }
+});
 
 app.get("/api/lots", async (req, res) => {
   try {

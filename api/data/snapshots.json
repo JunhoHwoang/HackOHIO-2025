@@ -44,31 +44,57 @@
     },
     {
       "weekday": 0,
+<<<<<<< HEAD
       "slot": "00:20",
       "open": 0,
       "occupied": 0,
       "detected_at": "2025-10-26T04:20:00.009Z"
+=======
+      "slot": "00:10",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:10:00.019Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:20",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:20:00.028Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     },
     {
       "weekday": 0,
       "slot": "00:30",
       "open": 0,
       "occupied": 0,
+<<<<<<< HEAD
       "detected_at": "2025-10-26T04:30:00.034Z"
+=======
+      "detected_at": "2025-10-26T04:30:00.017Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     },
     {
       "weekday": 0,
       "slot": "00:40",
       "open": 0,
       "occupied": 0,
+<<<<<<< HEAD
       "detected_at": "2025-10-26T04:40:00.013Z"
+=======
+      "detected_at": "2025-10-26T04:40:00.018Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     },
     {
       "weekday": 0,
       "slot": "00:50",
       "open": 0,
       "occupied": 0,
+<<<<<<< HEAD
       "detected_at": "2025-10-26T04:50:00.011Z"
+=======
+      "detected_at": "2025-10-26T04:50:00.015Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     }
   ],
   "lot-way-39115920": [
@@ -116,31 +142,57 @@
     },
     {
       "weekday": 0,
+<<<<<<< HEAD
       "slot": "00:20",
       "open": 0,
       "occupied": 0,
       "detected_at": "2025-10-26T04:20:00.009Z"
+=======
+      "slot": "00:10",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:10:00.019Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:20",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:20:00.028Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     },
     {
       "weekday": 0,
       "slot": "00:30",
       "open": 0,
       "occupied": 0,
+<<<<<<< HEAD
       "detected_at": "2025-10-26T04:30:00.034Z"
+=======
+      "detected_at": "2025-10-26T04:30:00.017Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     },
     {
       "weekday": 0,
       "slot": "00:40",
       "open": 0,
       "occupied": 0,
+<<<<<<< HEAD
       "detected_at": "2025-10-26T04:40:00.013Z"
+=======
+      "detected_at": "2025-10-26T04:40:00.018Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     },
     {
       "weekday": 0,
       "slot": "00:50",
       "open": 0,
       "occupied": 0,
+<<<<<<< HEAD
       "detected_at": "2025-10-26T04:50:00.011Z"
+=======
+      "detected_at": "2025-10-26T04:50:00.015Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     }
   ],
   "lot-way-275147287": [
@@ -188,31 +240,57 @@
     },
     {
       "weekday": 0,
+<<<<<<< HEAD
       "slot": "00:20",
       "open": 0,
       "occupied": 0,
       "detected_at": "2025-10-26T04:20:00.009Z"
+=======
+      "slot": "00:10",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:10:00.019Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:20",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:20:00.028Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     },
     {
       "weekday": 0,
       "slot": "00:30",
       "open": 0,
       "occupied": 0,
+<<<<<<< HEAD
       "detected_at": "2025-10-26T04:30:00.034Z"
+=======
+      "detected_at": "2025-10-26T04:30:00.017Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     },
     {
       "weekday": 0,
       "slot": "00:40",
       "open": 0,
       "occupied": 0,
+<<<<<<< HEAD
       "detected_at": "2025-10-26T04:40:00.013Z"
+=======
+      "detected_at": "2025-10-26T04:40:00.018Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     },
     {
       "weekday": 0,
       "slot": "00:50",
       "open": 0,
       "occupied": 0,
+<<<<<<< HEAD
       "detected_at": "2025-10-26T04:50:00.011Z"
+=======
+      "detected_at": "2025-10-26T04:50:00.015Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     }
   ],
   "lot-way-444966505": [
@@ -260,31 +338,57 @@
     },
     {
       "weekday": 0,
+<<<<<<< HEAD
       "slot": "00:20",
       "open": 0,
       "occupied": 0,
       "detected_at": "2025-10-26T04:20:00.009Z"
+=======
+      "slot": "00:10",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:10:00.019Z"
+    },
+    {
+      "weekday": 0,
+      "slot": "00:20",
+      "open": 0,
+      "occupied": 0,
+      "detected_at": "2025-10-26T04:20:00.028Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     },
     {
       "weekday": 0,
       "slot": "00:30",
       "open": 0,
       "occupied": 0,
+<<<<<<< HEAD
       "detected_at": "2025-10-26T04:30:00.034Z"
+=======
+      "detected_at": "2025-10-26T04:30:00.017Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     },
     {
       "weekday": 0,
       "slot": "00:40",
       "open": 0,
       "occupied": 0,
+<<<<<<< HEAD
       "detected_at": "2025-10-26T04:40:00.013Z"
+=======
+      "detected_at": "2025-10-26T04:40:00.018Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     },
     {
       "weekday": 0,
       "slot": "00:50",
       "open": 0,
       "occupied": 0,
+<<<<<<< HEAD
       "detected_at": "2025-10-26T04:50:00.011Z"
+=======
+      "detected_at": "2025-10-26T04:50:00.015Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     }
   ]
 }

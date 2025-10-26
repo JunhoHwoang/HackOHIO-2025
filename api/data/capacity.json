@@ -44,6 +44,7 @@
     },
     {
       "capacity": 441,
+<<<<<<< HEAD
       "occupied": 145,
       "source": "mock",
       "observed_at": "2025-10-26T04:20:00.008Z"
@@ -65,6 +66,35 @@
       "occupied": 148,
       "source": "mock",
       "observed_at": "2025-10-26T04:50:00.009Z"
+=======
+      "occupied": 147,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:10:00.017Z"
+    },
+    {
+      "capacity": 441,
+      "occupied": 147,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:20:00.028Z"
+    },
+    {
+      "capacity": 441,
+      "occupied": 146,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:30:00.016Z"
+    },
+    {
+      "capacity": 441,
+      "occupied": 146,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:40:00.016Z"
+    },
+    {
+      "capacity": 441,
+      "occupied": 144,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:50:00.014Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     }
   ],
   "lot-way-39115920": [
@@ -114,6 +144,7 @@
       "capacity": 38,
       "occupied": 0,
       "source": "mock",
+<<<<<<< HEAD
       "observed_at": "2025-10-26T04:20:00.008Z"
     },
     {
@@ -121,11 +152,15 @@
       "occupied": 0,
       "source": "mock",
       "observed_at": "2025-10-26T04:30:00.033Z"
+=======
+      "observed_at": "2025-10-26T04:10:00.017Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     },
     {
       "capacity": 38,
       "occupied": 2,
       "source": "mock",
+<<<<<<< HEAD
       "observed_at": "2025-10-26T04:40:00.012Z"
     },
     {
@@ -133,6 +168,27 @@
       "occupied": 4,
       "source": "mock",
       "observed_at": "2025-10-26T04:50:00.009Z"
+=======
+      "observed_at": "2025-10-26T04:20:00.028Z"
+    },
+    {
+      "capacity": 38,
+      "occupied": 3,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:30:00.016Z"
+    },
+    {
+      "capacity": 38,
+      "occupied": 5,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:40:00.016Z"
+    },
+    {
+      "capacity": 38,
+      "occupied": 3,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:50:00.014Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     }
   ],
   "lot-way-275147287": [
@@ -182,6 +238,7 @@
       "capacity": 51,
       "occupied": 0,
       "source": "mock",
+<<<<<<< HEAD
       "observed_at": "2025-10-26T04:20:00.008Z"
     },
     {
@@ -189,18 +246,41 @@
       "occupied": 0,
       "source": "mock",
       "observed_at": "2025-10-26T04:30:00.033Z"
+=======
+      "observed_at": "2025-10-26T04:10:00.017Z"
+    },
+    {
+      "capacity": 51,
+      "occupied": 2,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:20:00.028Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     },
     {
       "capacity": 51,
       "occupied": 3,
       "source": "mock",
+<<<<<<< HEAD
       "observed_at": "2025-10-26T04:40:00.012Z"
+=======
+      "observed_at": "2025-10-26T04:30:00.016Z"
+    },
+    {
+      "capacity": 51,
+      "occupied": 2,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:40:00.016Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     },
     {
       "capacity": 51,
       "occupied": 1,
       "source": "mock",
+<<<<<<< HEAD
       "observed_at": "2025-10-26T04:50:00.009Z"
+=======
+      "observed_at": "2025-10-26T04:50:00.014Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     }
   ],
   "lot-way-444966505": [
@@ -250,6 +330,7 @@
       "capacity": 435,
       "occupied": 0,
       "source": "mock",
+<<<<<<< HEAD
       "observed_at": "2025-10-26T04:20:00.008Z"
     },
     {
@@ -257,18 +338,41 @@
       "occupied": 2,
       "source": "mock",
       "observed_at": "2025-10-26T04:30:00.033Z"
-    },
-    {
-      "capacity": 435,
-      "occupied": 1,
-      "source": "mock",
-      "observed_at": "2025-10-26T04:40:00.012Z"
+=======
+      "observed_at": "2025-10-26T04:10:00.017Z"
     },
     {
       "capacity": 435,
       "occupied": 0,
       "source": "mock",
+      "observed_at": "2025-10-26T04:20:00.028Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
+    },
+    {
+      "capacity": 435,
+      "occupied": 1,
+      "source": "mock",
+<<<<<<< HEAD
+      "observed_at": "2025-10-26T04:40:00.012Z"
+=======
+      "observed_at": "2025-10-26T04:30:00.016Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
+    },
+    {
+      "capacity": 435,
+      "occupied": 0,
+      "source": "mock",
+<<<<<<< HEAD
       "observed_at": "2025-10-26T04:50:00.009Z"
+=======
+      "observed_at": "2025-10-26T04:40:00.016Z"
+    },
+    {
+      "capacity": 435,
+      "occupied": 0,
+      "source": "mock",
+      "observed_at": "2025-10-26T04:50:00.014Z"
+>>>>>>> 94505a6 (green dot, collect data from database)
     }
   ]
 }

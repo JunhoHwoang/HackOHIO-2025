@@ -45,6 +45,7 @@ export default function LotList({ searchQuery = '' }: { searchQuery?: string }) 
   const filters = useApp((s) => s.filters)
   const selectedLotId = useApp((s) => s.selectedLotId)
   const setSelectedLotId = useApp((s) => s.setSelectedLotId)
+  const lotSnapshots = useApp((s) => s.lotSnapshots)
   const navigate = useNavigate()
 
   const near = loc ? `${loc.lat},${loc.lng}` : undefined
@@ -79,11 +80,21 @@ export default function LotList({ searchQuery = '' }: { searchQuery?: string }) 
       <div className='flex-1 overflow-y-auto overflow-x-hidden px-3 sm:px-4 py-4 space-y-4 custom-scrollbar'>
         {filtered.map((lot: any) => {
           const isSelected = lot.id === selectedLotId
-          const open = lot.counts?.open ?? 0
-          const total = lot.counts?.total ?? 0
+          const snapshot = lotSnapshots[lot.id]
+          const countsSource = snapshot?.counts ?? lot.counts ?? { total: 0, occupied: 0, open: 0, unknown: 0 }
+          const total = countsSource.total ?? 0
+          const occupied = countsSource.occupied ?? 0
+          const open =
+            countsSource.open != null
+              ? countsSource.open
+              : Math.max(total - occupied - (countsSource.unknown ?? 0), 0)
           const ratio = total > 0 ? open / total : 0
           const distance = formatDistance(lot.distanceMeters)
           const walk = formatWalk(lot.distanceMeters)
+          const observedAt = snapshot?.observedAt ?? lot.latestCap?.observed_at ?? null
+          const updatedLabel = observedAt
+            ? `Updated ${new Date(observedAt).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}`
+            : 'Updated moments ago'
 
           return (
             <div
@@ -125,7 +136,9 @@ export default function LotList({ searchQuery = '' }: { searchQuery?: string }) 
                 </div>
               )}
               <div className='mt-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-xs text-osu-gray'>
-                <div className='order-2 sm:order-1 text-gray-500'>Updated moments ago</div>
+                <div className='order-2 sm:order-1 text-gray-500'>
+                  {updatedLabel} • {occupied} occupied
+                </div>
                 <button
                   type='button'
                   className='order-1 sm:order-2 text-osu-scarlet hover:underline font-medium self-start sm:self-auto'
