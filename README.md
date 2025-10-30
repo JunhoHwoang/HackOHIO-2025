@@ -1,12 +1,18 @@
 # 🅿️ OSU Smart Parking — Hackathon Prototype
 
-A full-stack prototype for a real-time smart parking tracker at The Ohio State University, built during the HackOHIO 2025 hackathon.
-This project combines a computer vision backend that detects occupied stalls with a React + Leaflet web app for live visualization.
+**🥈HACKOHI/O 2025 Honda Challenge 2nd Place**
 
-Two-part app:
-- `api/`: Node/Express mock API (ESM). Seeds mock OSU lots & a demo image.
+A full-stack prototype for a real-time smart surface/garage parking tracker at The Ohio State University, built during the HackOHI/O 2025 hackathon.
+This project combines a computer vision backend that detects occupied surface parking spots and web scraping for garage information with a 
+React + Leaflet web app for live visualization.
+
+**DEMO: [Youtube](https://youtu.be/huP-m7OyAwQ)**
+
+Three-part app:
+- `api/`: Node/Express API. Seeds OSU lots & Fetch from Database
 - `web/`: React + Vite + TypeScript + Tailwind + Leaflet frontend.
-
+- `Backend/`: Pytorch for CV + Selenium for Web Scraping
+  
 ## Requirements
 - Node 18+
 - npm (or pnpm/yarn)
