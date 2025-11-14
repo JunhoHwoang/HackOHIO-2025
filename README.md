@@ -6,7 +6,8 @@ A full-stack prototype for a real-time smart surface/garage parking tracker at T
 This project combines a computer vision backend that detects occupied surface parking spots and web scraping for garage information with a 
 React + Leaflet web app for live visualization.
 
-**DEMO: [Youtube](https://youtu.be/huP-m7OyAwQ)**
+**DEMO: [Youtube](https://youtu.be/uGOvJDlFeZ0?si=EfPygGiXxndG7AIv)**
+**BLOG: [Medium](https://medium.com/99p-labs/hack-ohi-o-2025-14330ac1931e)**
 
 Three-part app:
 - `api/`: Node/Express API. Seeds OSU lots & Fetch from Database
