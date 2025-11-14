@@ -7,6 +7,7 @@ This project combines a computer vision backend that detects occupied surface pa
 React + Leaflet web app for live visualization.
 
 **DEMO: [Youtube](https://youtu.be/uGOvJDlFeZ0?si=EfPygGiXxndG7AIv)**
+
 **BLOG: [Medium](https://medium.com/99p-labs/hack-ohi-o-2025-14330ac1931e)**
 
 Three-part app:
